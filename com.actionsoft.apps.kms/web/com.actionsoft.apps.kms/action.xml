@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aws-actions>
+
+    <!-- 知识中心 -->
+    <cmd-bean name="com.actionsoft.apps.kms_knwl">
+        <param name="page"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_me_card_list_json">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+        <param name="filter"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_publish_card_list_json">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+        <param name="filter"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_log_list">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="cardId"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_borrow_card_list_json">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+        <param name="filter"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_publish_examine_card_list_json">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_dimension_tree_json">
+        <param name="parentId"/>
+        <param name="isDimensionKnwlPage"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_dimension_card_list_json">
+        <param name="dimensionId"/>
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+        <param name="filter"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_delete_file">
+        <param name="cardId"/>
+        <param name="fileId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_me_publish_dimension_tree_json">
+        <param name="parentId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_schema_attr_list_json">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_publish_card">
+        <param name="publishCardIds"/>
+        <param name="publishDimensionIds"/>
+        <param name="schemaMetaData"/>
+        <param name="tags"/>
+        <param name="publishMemo"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_rate_card">
+        <param name="rateId"/>
+        <param name="cardId"/>
+        <param name="rateLevel"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_browse_card_info_json">
+        <param name="cardId"/>
+        <param name="isBorrow"/>
+        <param name="boId"/>
+        <param name="isEdit"/>
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_browse_card_page">
+        <param name="cardId"/>
+        <param name="isPage"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_send_browse_invitation">
+        <param name="cardId"/>
+        <param name="targetUsers"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_comment_insert">
+        <param name="cardId"/>
+        <param name="commentContent"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_stat_json">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_borrow_card_process_start">
+        <param name="cardId"/>
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_publish_card_process_start">
+        <param name="cardIds"/>
+        <param name="dimensionId"/>
+        <param name="schemaMetaData"/>
+        <param name="tags"/>
+        <param name="publishMemo"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_cancel_publish_card">
+        <param name="publishId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_home">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_get_dimension_path_from_root">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_package_files">
+        <param name="cardId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_collect_card">
+        <param name="cardId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_delete_unsaved_files">
+        <param name="cardId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_report_card">
+        <param name="cardId"/>
+        <param name="dimensionId"/>
+        <param name="reportContent"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_preview_file">
+        <param name="fileId"/>
+        <param name="isDownload"/>
+		<param name="isCopy"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_download_file">
+        <param name="fileId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_latest_comment">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_get_network_page">
+        <param name="cardId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_get_network_tree">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_all_move_dimension_tree_json">
+        <param name="parentId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_move_card">
+        <param name="cardIds"/>
+        <param name="dimensionIds"/>
+        <param name="currDimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_copy_card">
+        <param name="cardIds"/>
+        <param name="dimensionIds"/>
+        <param name="currDimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_check_card_has_file">
+        <param name="cardIds"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_cancel_publish_card_process_start">
+        <param name="publishId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_browser_preview">
+        <param name="fileId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_browser_preview_image">
+        <param name="fileId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_browser_preview_form">
+        <param name="fileId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_grid_html">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_grid_page_iframe">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_grid_page">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_dimension_card_list_all_json">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <!-- 知识检索 -->
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_search">
+		<param name="searchType"/>
+		<param name="sortIndx"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_search_attr_dimension_tree_json">
+        <param name="parentId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_search_attr_dimension_tree_all_json">
+    </cmd-bean>
+
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_search_schema_attr_list_json">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_attr_search_dosearch">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+        <param name="searchDimensionIds"/>
+        <param name="schemaMetaData"/>
+        <param name="cardName"/>
+        <param name="publishTime"/>
+        <param name="publishUser"/>
+        <param name="tags"/>
+        <param name="lastPublishId"/>
+		<param name="searchType"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_fullsearch_list_json">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="searchText"/>
+        <param name="docTypes"/>
+		<param name="searchType"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_shareto_network">
+        <param name="cardId"/>
+        <param name="teamId"/>
+        <param name="networkId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_memberlist">
+        <param name="term"/>
+    </cmd-bean>
+
+    <!-- 知识维护 -->
+    <cmd-bean name="com.actionsoft.apps.kms_mgr">
+        <param name="page"/>
+        <param name="tab"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_tree_json">
+        <param name="parentId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_tree_bindhotspot_json">
+        <param name="parentId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_validdate_tree_json">
+        <param name="parentId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_validdate_tree_all_json">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_dimension_list_json">
+        <param name="parentId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_add_dimension">
+        <param name="dimensionNames"/>
+        <param name="parentId"/>
+        <param name="showtype"/>
+        <param name="isPublishKnwl"/>
+        <param name="isExamine"/>
+        <param name="memo"/>
+        <param name="hotspotName"/>
+        <param name="isEnabled"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_update_dimension">
+        <param name="id"/>
+        <param name="dimensionName"/>
+        <param name="showtype"/>
+        <param name="isPublishKnwl"/>
+        <param name="isExamine"/>
+        <param name="memo"/>
+        <param name="hotspotName"/>
+        <param name="isEnabled"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_delete_dimension">
+        <param name="ids"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_schema_list_json">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_valid_date_card_list_json">
+        <param name="curPage"/>
+        <param name="rowsPerPage"/>
+        <param name="dimensionIdArr"/>
+        <param name="validDate"/>
+        <param name="sortIndx"/>
+        <param name="sortDir"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_insert_card">
+        <param name="cardId"/>
+        <param name="cardName"/>
+        <param name="validDate"/>
+        <param name="onlineLevel"/>
+        <param name="securityLevel"/>
+        <param name="cardType"/>
+        <param name="isComment"/>
+        <param name="isRate"/>
+		<param name="cardContext"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_update_card">
+        <param name="cardId"/>
+        <param name="cardName"/>
+        <param name="validDate"/>
+        <param name="onlineLevel"/>
+        <param name="securityLevel"/>
+        <param name="cardType"/>
+        <param name="isComment"/>
+        <param name="isRate"/>
+		<param name="cardContext"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_delete_card">
+        <param name="cardIds"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_file_list_json">
+        <param name="cardId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_meta_attr_list_json">
+        <param name="schemaId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_add_meta_schema">
+        <param name="schemaTitle"/>
+        <param name="schemaShowtype"/>
+        <param name="isNullable"/>
+        <param name="isSearch"/>
+        <param name="schemaDesc"/>
+        <param name="metaAttr"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_update_meta_schema">
+        <param name="schemaId"/>
+        <param name="schemaTitle"/>
+        <param name="schemaShowtype"/>
+        <param name="isNullable"/>
+        <param name="isSearch"/>
+        <param name="schemaDesc"/>
+        <param name="metaAttr"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_delete_meta_schema">
+        <param name="schemaIds"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_binding">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_bind">
+        <param name="dimensionId"/>
+        <param name="shapeId"/>
+        <param name="hotspotDefId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_bind_card">
+        <param name="cardId"/>
+        <param name="shapeId"/>
+        <param name="hotspotDefId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_delete_bind">
+        <param name="hotspotId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_bind_linkurl">
+        <param name="linkurl"/>
+        <param name="target"/>
+        <param name="shapeId"/>
+        <param name="hotspotDefId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_render_hotspot_div">
+        <param name="dimensionId"/>
+        <param name="shapeId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_move_dimension">
+        <param name="sourceDimensionId"/>
+        <param name="targetDimensionId"/>
+        <param name="sort"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_delay_validdate">
+        <param name="dimensionIdArr"/>
+        <param name="validDate"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_meta_schema_order_index_save">
+        <param name="sourceId"/>
+        <param name="targetId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_cancel_publishes_card_check">
+        <param name="cardId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_cancel_publishes_card">
+        <param name="cardId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_get_examine_user">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_report">
+        <param name="dimensionId"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_dimension_ac_to_des">
+        <param name="dimensionId"/>
+        <param name="style"/>
+    </cmd-bean>
+
+    <!-- 系统维护 -->
+    <cmd-bean name="com.actionsoft.apps.kms_system_mgr">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_version_list_json">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_hotspot_def_list_json">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_system_mgr_save_param">
+        <param name="maxFileSize"/>
+        <param name="blackFileList"/>
+        <param name="gridRowPP"/>
+        <param name="browserPreview"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_system_mgr_get_param_json">
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_system_mgr_add_version">
+        <param name="versionNo"/>
+        <param name="memo"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_system_mgr_add_hotspot_def">
+        <param name="hotspotName"/>
+        <param name="hotspotMetaId"/>
+        <param name="memo"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_delete_version">
+        <param name="versionNos"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_delete_hotspot_def">
+        <param name="hotspotDefIds"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_knwl_center_delete_hotspot_check">
+        <param name="hotspotDefIds"/>
+    </cmd-bean>
+    <!-- usertask -->
+    <cmd-bean name="com.actionsoft.apps.kms_usertask_html">
+        <param name="formToKMSOptionDimensionIdJA"/>
+    </cmd-bean>
+    <cmd-bean name="com.actionsoft.apps.kms_es_search">
+		<param name="q"/>
+	</cmd-bean>
+	<cmd-bean name="com.actionsoft.apps.kms_xpages">
+	</cmd-bean>
+	<cmd-bean name="com.actionsoft.apps.kms_knwl_mgr_dimension_copy">
+		<param name="newDimensionName"/>
+		<param name="currDimensionId"/>
+	</cmd-bean>
+	<cmd-bean name="com.actionsoft.apps.kms_querycardtoplist">
+		<param name="sortIndx"/>
+	</cmd-bean>
+	<cmd-bean name="com.actionsoft.apps.kms_querycardtoppage">
+		<param name="sortIndx"/>
+	</cmd-bean>
+</aws-actions>

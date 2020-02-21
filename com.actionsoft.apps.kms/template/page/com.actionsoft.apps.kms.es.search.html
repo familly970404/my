@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<!-- JQuery -->
+		<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+		
+		<!-- AWS UI -->
+		<link rel="stylesheet" type="text/css" href="../commons/css/awsui.css"/>
+		<script type="text/javascript" src="../commons/js/awsui.js"></script>
+		<script type="text/javascript" src="../commons/js/public.js"></script>
+		<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.es.search.js"></script>
+		
+	    <script type="text/javascript" src="../commons/js/jquery/scripts/ui/awsui.pagination.js"></script>
+	    <script type="text/javascript" src="../commons/js/jquery/scripts/ui/datepicker/aws.datepicker-zh-CN.js"></script>
+	    <!--jscolor-->
+		<style type="text/css">
+			#fullsearchListOl {
+			    padding-left: 20px;
+			    padding-right: 20px;
+			}
+			.result-item {
+			    padding: 5px 15px 5px 15px;
+			    list-style: none;
+			    border-bottom: 1px dashed #dadada;
+			    min-height: 60px;
+			    margin-top: -1px;
+			}
+			.result-title {
+			    text-decoration: none;
+			    font-size: 16px;
+			    margin-bottom: 4px;
+			    line-height: 30px;
+			    color: #0d6aca;
+			}
+			.result-snippet {
+			    color: #333333;
+			    line-height: 22px;
+			    font-size: 13px;
+			}
+			.result-dimension {
+			    font-size: 12px;
+			    color: #5ba110;
+			    text-decoration: none;
+			    line-height: 20px;
+			    margin-right: 10px;
+			}
+			.result-timeauthor {
+			    position: absolute;
+			    top: 0;
+			    right: 0;
+			    color: #cccccc;
+			    font-size: 12px;
+			}
+			.result-download {
+			    position: absolute;
+			    bottom: 0;
+			    right: 0;
+			    text-decoration: underline;
+			    color: #0d6aca;
+			    font-size: 12px;
+			    cursor: pointer;
+			}
+			div.kms-no-file {
+			    color: #aaaaaa;
+			    text-align: center;
+			    font-size: 14px !important;
+			    width: 100%;
+			    height: 200px;
+			    line-height: 120px !important;
+			    background: url(../apps/com.actionsoft.apps.kms/img/search-empty.png);
+			    background-repeat: no-repeat;
+			    background-position: center;
+			    -moz-user-select: none;
+			    -webkit-user-select: none;
+			    -ms-user-select: none;
+			    -khtml-user-select: none;
+			    cursor: default;
+			    margin-top:50px;
+			}
+			div.kms-no-file .title {
+			    font-size: 16px;
+			    line-height: 30px !important;
+			    position: relative;
+				top:55px;
+			}
+			div.kms-no-file .content {
+			    font-size: 13px;
+			    line-height: 17px !important;
+			    position: relative;
+				top:55px;
+			}
+			/* 遮罩   */
+			#fullscreenWrap {
+			    width: 100%;
+			    height: 100%;
+			    background-color: rgba(0, 0, 0, 0.1);
+			    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#e5000000, endColorstr=#e5000000);
+			    position: absolute;
+			    left: 0px;
+			    top: 0px;
+			    z-index: 149;
+			    text-align: center;
+			    margin: 0 auto;
+			}
+			
+			#previewpanel > iframe {
+			    background: transparent;
+			}
+			
+			.previewpanel {
+			    width: 100%;
+			    background-color: rgba(0, 0, 0, 0.8);
+			    filter: enabled='true', progid:DXImageTransform.Microsoft.gradient(startColorstr=#e5000000, endColorstr=#e5000000);
+			    /* filter:alpha(opacity=10); */
+			    position: absolute;
+			    top: 0px;
+			    bottom: 0;
+			    z-index: 149;
+			    display: block;
+			}
+			
+			.previewfrm {
+			    display: inline-block;
+			    width: 100%;
+			    height: 100%;
+			    filter: enabled='true', progid:DXImageTransform.Microsoft.gradient(startColorstr=#e5000000, endColorstr=#e5000000);
+			    background-color: rgba(0, 0, 0, 0.5);
+			    direction: ltr;
+			    overflow: visible;
+			    border: 0px solid transparent;
+			    border-top: 0;
+			    box-sizing: border-box;
+			    background-clip: content-box;
+			    border-bottom: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			var sid = "<#sid>";
+		    var searchWords = "<#searchWords>";
+		    var browserPreviewStr = "<#browserPreview>";
+		    var isOnlinedocAppActive = <#isOnlinedocAppActive>;
+		    var canPreviewType = "<#canPreviewType>";
+		</script>
+	</head>
+	<body>
+	    <div id = "fullsearch-result" style='width:100%;margin: 0 auto;'>
+		   <ol id="fullsearchListOl">
+		   </ol>
+		   <div style="height: 60px; width: 100%; /* position: absolute; bottom: 0;  */text-align: center; display: table;">
+	            <div id="pagination" style="vertical-align: middle; display: table-cell; padding-left: 2px; overflow: hidden;">
+	                <img src="../apps/com.actionsoft.apps.kms/img/loading.gif" style="display: none;">
+	                <span style="cursor: pointer; position: relative; top: 2px; display: none;">已经显示全部结果</span>
+					<button type="button" class="button blue" onclick="fullsearch.doSearch(false)" style="display: none;">加载更多</button>
+	            </div>
+		   </div>
+		</div>
+		<div id="fullscreenWrap" style="filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000,endColorstr=#E5000000);position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; z-index: 600;">
+		<!-- <div id="fullscreenpanel" class="fullscreenpanel"></div> -->
+			<div id='fstoolbar' class="fstoolbar">
+				<div class='toolbar-photo'>
+					<img src="" class="awsui-user-profile">
+				</div>
+				<div class='toolbar-title'></div>
+				<div id="fsclosebtn" class="fsclosebtn" title="关闭"></div>
+				<div id="fsdownloadbtn" class="fsdownloadbtn" onclick="downloadFile(this)" title="下载文件"></div>
+			</div>
+			<div id="previewpanel" class="previewpanel"></div>
+	   </div>
+	</body>
+</html>

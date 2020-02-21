@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../commons/css/awsui.css" />
+<script type="text/javascript" src="../commons/js/public.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/ui/datepicker/aws.datepicker-zh-CN.js"></script>
+
+<script type="text/javascript" src="../commons/js/awsui.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.knwl_search_toplist.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.common.opt.js"></script>
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.knwl_search.css" />
+
+<!--Grid-->
+<script src="../commons/js/jquery/scripts/ui/reference/jquery-ui.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid-localize-zh.js"></script>
+<!-- 分页 -->
+<script src="../commons/js/jquery/scripts/ui/awsui.pagination.js"></script>
+
+<script type="text/javascript">
+	var sortIndx = '<#sortIndx>';
+	var sid = "<#sid>";
+</script>
+<style type="text/css">
+
+table.aws-grid-header-table div.aws-grid-header-table-div{
+		line-height:24px !important;
+}
+
+.aws-grid-header td.pq-col-sort-asc, .aws-grid-header td.pq-col-sort-desc{
+	background: #fefefe;
+	color: #6c98d1;
+}
+
+#datepicker .ui-state-active {
+	background: rgb(0, 119, 204) !important;
+}
+
+#datepicker .state-active {
+	border: 1px solid #AAAAAA !important;
+	font-weight: normal !important;
+	color: #FFFFFF !important;
+	background: #0077CC !important;
+}
+</style>
+</head>
+<body>
+	<div id="attrsearchGrid" style="border-left: 0;z-index: 0;"></div>
+	<div id="attrsearchGrid-btn">
+	<div class="more-button" style="display:none;height:30px;text-align:center;line-height:30px;cursor:pointer;" onclick="attrsearch.loadNextPage();">加载更多</div>
+	<div class="search-end" style="display:none;height:30px;text-align:center;line-height:30px;color:#cccccc" >数据加载完毕</div>
+	</div>
+
+</body>
+</html>

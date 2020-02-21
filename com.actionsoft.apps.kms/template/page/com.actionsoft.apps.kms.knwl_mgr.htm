@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../commons/css/awsui.css" />
+<script type="text/javascript" src="../commons/js/public.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+
+<script type="text/javascript" src="../commons/js/awsui.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.knwl_mgr.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.common.opt.js"></script>
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.knwl_mgr.css" />
+<!--Grid-->
+<script src="../commons/js/jquery/scripts/ui/reference/jquery-ui.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid-localize-zh.js"></script>
+	<!--HTML EDITOR-->
+	<link type='text/css' rel='stylesheet' href='../commons/plug-in/ueditor/themes/default/css/ueditor.css' />
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.config.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.all.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/lang/zh-cn/zh-cn.js'></script>
+	<script type='text/javascript' src='../commons/js/jquery/scripts/ui/aws.ueditor.config.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.parse.js'></script>
+	<script type='text/javascript' src='../commons/js/jquery/scripts/jquery.md5.js'></script>
+<script type="text/javascript">
+	var sid = "<#sid>";
+	var isSysAdmin = <#isSysAdmin>;
+	var today = '<#today>';
+	var hasDimensionPerm = <#hasDimensionPerm>;
+	var hasMetaPerm = <#hasMetaPerm>;
+	var hasValidDatePerm = <#hasValidDatePerm>;
+	var isKnwlMgr = <#isKnwlMgr>;
+</script>
+<style type="text/css">
+#datepicker .ui-state-active {
+	background: rgb(0, 119, 204) !important;
+}
+
+#datepicker .state-active {
+	border: 1px solid #AAAAAA !important;
+	font-weight: normal !important;
+	color: #FFFFFF !important;
+	background: #0077CC !important;
+}
+</style>
+</head>
+<body>
+	<div id="tabs">
+		<div class="reload-page-wrap" title="刷新" onclick="location.reload();">
+			<div class="reload-page"></div>
+		</div>
+	</div>
+	<div id="tabs-content">
+		<div index="nav-tab-dimension" id="tab-dimension" class="awsui-layout-iframe" style="overflow: hidden; display: none;">
+			<div id="dimension-left" class="dimension-left">
+				<div class="awsui-toolbar">
+					<a id="knwlMgrACBtn" class="awsui-button" style="display: none;"> <span class="icon" style="background: url(../commons/img/user_16.png);"></span> <span class="title">知识管理员</span>
+					</a>
+                    <a id="dimensionReportBtn" class="awsui-button"> <span class="icon" style="background: url(../apps/com.actionsoft.apps.kms/img/report.png);background-repeat: no-repeat;margin-top: 1px;"></span> <span class="title">维度策略报告</span>
+					</a>
+
+				</div>
+				<ul id="dimensionTree"></ul>
+				<div style="height: 20px; border: 1px solid #e0e0e0; border-bottom: 1px solid #d5d5d5; box-shadow: 0px 2px 1px #efefef; padding: 6px 10px 2px 10px; text-align: left; border-right: 0;">
+					<span class="kms_hint"></span> <span>支持拖动移动</span>
+				</div>
+			</div>
+			<div id="dimension-separater" style="width: 0px; height: 100%; float: left; cursor: col-resize; padding-left: 3px; padding-right: 4px; position: relative; left: -3px; z-index: 2;">
+				<div style="width: 0; height: 100%; border-left: 1px solid #C6C8CC;"></div>
+			</div>
+			<div id="dimension-right" class="dimension-right" style="left: -6px; z-index: 1;">
+				<div id="dimension-toolbar" class="awsui-toolbar">
+					<button id="addDimensionBtn" type="button" class="button blue">新建</button>
+					<button id="deleteDimensionBtn" type="button" class="button red" style="display: none;">删除</button>
+					<button id="copyDimensionBtn" type="button" class="button blue" style="display: none;">复制</button>
+				</div>
+				<div id="dimensionGrid" style="border-left: 0;"></div>
+			</div>
+			<div id="dimensionDialog" style="display: none;">
+				<table class="awsui-ux" width="100%" cellspacing="10" cellpadding="0">
+					<colgroup>
+						<col class="awsui-ux-title">
+						<col style="width: 100%;">
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>ID</td>
+							<td style="height: 32px;"><input class="txt" id="dimensionId" readonly disabled></td>
+						</tr>
+                        <tr>
+							<td>名称</td>
+							<td style="height: 32px;"><span class="required"><input class="txt" id="dimensionName"></span></td>
+						</tr>
+						<tr>
+							<td>绑定知识地图</td>
+							<td style="height: 32px;"><input type="checkbox" id="showtype"></td>
+						</tr>
+						<tr id="hotspotNameTR" style="display: none; height: 32px;">
+							<td>知识地图</td>
+							<td style="height: 32px;"><span class="required"><select class="awsui-select" id="hotspotName" style="width: 409px;"></select></span></td>
+						</tr>
+                        <tr id="isPublishKnwlTR">
+                            <td>允许发布知识</td>
+                            <td style="height: 32px;"><input type="checkbox" id="isPublishKnwl"></td>
+                        </tr>
+                        <tr id="isExamineTR">
+                            <td>发布是否需要审批</td>
+                            <td style="height: 32px;"><input type="checkbox" id="isExamine"></td>
+                        </tr>
+                        <tr id="examineUserTR">
+                            <td>审批人</td>
+                            <td style="height: 32px;white-space: normal;"><span id="examineUserSpan" style="cursor: default;" title="优先维度管理员、其次知识管理员"></span></td>
+                        </tr>
+						<tr>
+							<td>是否启用</td>
+							<td style="height: 32px;"><input type="checkbox" id="isEnabled"></td>
+						</tr>
+						<tr>
+							<td>描述</td>
+							<td><textarea id="memo" style="height: 80px;" class="txt awsui-textarea"></textarea></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id='hotspotDiv' style="display: none;">
+				<div class="dialog-wrap dlg-content" style="margin-top: 0;">
+					<iframe id="hotspotFrame" name="hotspotFrame" frameBorder="0" style="width: 100%; height: 100%; border: 0;"></iframe>
+				</div>
+			</div>
+		</div>
+		<div index="nav-tab-metaSchema" id="tab-metaSchema" class="awsui-layout-iframe" style="overflow: hidden; display: none;">
+			<div id="meta-schema-toolbar" class="awsui-toolbar">
+				<button id="addSchemaBtn" type="button" class="button blue">新建</button>
+				<button id="deleteSchemaBtn" onclick="schema.deleteSchema()" type="button" class="button red" style="display: none;">删除</button>
+				<span style="display: inline-block; float: right; margin-top: 5px; font-size: 13px;">支持拖动排序</span><span class="kms_hint" style="float: right; margin-top: 11px;"></span>
+			</div>
+			<div id="meta-schema-grid"></div>
+			<div id='addSchemaDialog' style="display: none;">
+				<table class="awsui-ux" style="padding: 10px 10px;">
+					<tbody>
+						<tr>
+							<td>
+								<fieldset style="margin: 0;">
+									<legend style="margin: 0;"> 基本信息 </legend>
+									<table class="awsui-ux" style="padding: 10px 10px;">
+										<colgroup>
+											<col class="awsui-ux-title" style="width: 15%;">
+											<col style="width: 35%;">
+											<col class="awsui-ux-title" style="width: 15%;">
+											<col style="width: 35%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="awsui-ux-title">名称</td>
+												<td><span class="required"> <input id="schemaTitle" placeholder="请输入名称..." name="schemaTitle" type="text" class="txt" />
+												</span></td>
+												<td class="awsui-ux-title">UI类型</td>
+												<td><select id="schemaShowtype" class="awsui-select" style="width: 200px;">
+														<option value="0">复选框</option>
+														<option value="1">单选按钮</option>
+														<option value="2">文本框</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td class="awsui-ux-title">必填</td>
+												<td><input type="checkbox" id="isNullable"></td>
+												<td class="awsui-ux-title">检索</td>
+												<td><input type="checkbox" id="isSearch" title="是否在条件检索中显示"></td>
+											</tr>
+											<tr>
+												<td class="awsui-ux-title">描述</td>
+												<td colspan="3"><textarea id="schemaDesc" style="height: 80px;" class="txt awsui-textarea"></textarea></td>
+											</tr>
+										</tbody>
+									</table>
+								</fieldset>
+							</td>
+						</tr>
+						<tr id="addAttrTR">
+							<td>
+								<fieldset style="margin: 0;">
+									<legend style="margin: 0; height: 22px;">
+										<span style="float: left;">属性列表</span>
+										<button id="addMetaAttrBtn" onclick="schema.addMetaAttr()" type="button" class="button small green" style="display: inline-block; float: right; position: relative; top: -4px;">添加</button>
+										<button id="deleteMetaAttrBtn" onclick="schema.deleteMetaAttr()" type="button" class="button small red" style="display: none; float: right; position: relative; top: -4px;">删除</button>
+									</legend>
+									<div id="metaAttrGrid_add"></div>
+								</fieldset>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id='updateSchemaDialog' style="display: none;">
+				<table class="awsui-ux" style="padding: 10px 10px;">
+					<tbody>
+						<tr>
+							<td>
+								<fieldset style="margin: 0;">
+									<legend style="margin: 0;"> 基本信息 </legend>
+									<table class="awsui-ux" style="padding: 10px 10px;">
+										<colgroup>
+											<col class="awsui-ux-title" style="width: 15%;">
+											<col style="width: 35%;">
+											<col class="awsui-ux-title" style="width: 15%;">
+											<col style="width: 35%;">
+										</colgroup>
+										<tbody>
+											<tr>
+												<td class="awsui-ux-title">名称</td>
+												<td><span class="required"> <input id="schemaTitleUpdate" placeholder="请输入名称..." name="schemaTitle" type="text" class="txt" />
+												</span></td>
+												<td class="awsui-ux-title">UI类型</td>
+												<td><select id="schemaShowtypeUpdate" class="awsui-select" style="width: 200px;">
+														<option value="0">复选框</option>
+														<option value="1">单选按钮</option>
+														<option value="2">文本框</option>
+												</select></td>
+											</tr>
+											<tr>
+												<td class="awsui-ux-title">必填</td>
+												<td><input type="checkbox" id="isNullableUpdate"></td>
+												<td class="awsui-ux-title">检索</td>
+												<td><input type="checkbox" id="isSearchUpdate" title="是否在条件检索中显示"></td>
+											</tr>
+											<tr>
+												<td class="awsui-ux-title">描述</td>
+												<td colspan="3"><textarea id="schemaDescUpdate" style="height: 80px;" class="txt awsui-textarea"></textarea></td>
+											</tr>
+										</tbody>
+									</table>
+								</fieldset>
+							</td>
+						</tr>
+						<tr id="updateAttrTR">
+							<td>
+								<fieldset style="margin: 0;">
+									<legend style="margin: 0; height: 22px;">
+										<span style="float: left;">属性列表</span>
+										<button id="addMetaAttrBtnUpdate" onclick="schema.addMetaAttrUpdate()" type="button" class="button small green" style="float: right; position: relative; top: -4px;">添加</button>
+										<button id="deleteMetaAttrBtnUpdate" onclick="schema.deleteMetaAttrUpdate()" type="button" class="button small red" style="display: none; float: right; position: relative; top: -4px;">删除</button>
+									</legend>
+									<div id="metaAttrGrid_update"></div>
+								</fieldset>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div index="nav-tab-periofvali" id="tab-periofvali" class="awsui-layout-iframe" style="overflow: hidden; display: none;">
+			<div id="periofvali-left" class="dimension-left">
+				<div class="awsui-toolbar">
+					<span style="height: 30px; line-height: 30px; display: inline-block; font-size: 12px;">自动选中子节点：</span> <input type="checkbox" id="checkInheritSB">
+				</div>
+				<ul id="validateTree"></ul>
+			</div>
+			<div id="periofvali-separater" style="width: 0px; height: 100%; float: left; cursor: col-resize; padding-left: 3px; padding-right: 4px; position: relative; left: -3px; z-index: 2;">
+				<div style="width: 0; height: 100%; border-left: 1px solid #C6C8CC;"></div>
+			</div>
+			<div id="periofvali-right" class="dimension-right" style="left: -6px; z-index: 1;">
+				<div id="valid-date-card-toolbar" class="awsui-toolbar">
+					<span style="position: relative; top: 6px;">有效期从&nbsp;</span><input id="startValidDate" class="awsui-datepicker" style="width: 100px;" type="text" onFocus="WdatePicker({maxDate:'#F{$dp.$D(\'endValidDate\')||\'2099-10-01\'}'})" /> <span style="position: relative; top: 6px;">到&nbsp;</span><input id="endValidDate" class="awsui-datepicker" style="width: 100px;" type="text" onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startValidDate\')}',maxDate:'2099-10-01'})" />
+
+
+					<button id="checkValidateBtn" class="button blue">查询</button>
+					<button id="delayDateBtn" class="button green" style="display: none; float: right; margin-left: 10px; margin-right: 0;">修改有效期</button>
+					<input id="delayDateInput" placeholder="请输入新的有效期..." class="awsui-datepicker" style="display: none; width: 160px; float: right;">
+				</div>
+				<div id="valid-date-card-grid" style="border-left: 0;"></div>
+			</div>
+		</div>
+		<div title="复制维度" style="width:350px;display:none;" id="dialog-copydimension">
+			<table>
+				<tr>
+					<td width="80px">维度名称</td>
+					<td><span class="required"></span><div class="awsui-form-input">
+						<input id="newDimensionName" type="text" style="width:250px" placeholder="请输入标题" class="awsui-txt">
+					</div></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<awsScheduleModel>
+    <id>c43a6be8-2593-466f-9d41-386ef7aae858</id>
+    <createUser>admin</createUser>
+    <createTime>2018-02-27 11:23:48</createTime>
+    <updateUser></updateUser>
+    <updateTime>2019-12-04 08:52:57</updateTime>
+    <signature>DgQSSyFmOqrf7WQa6WFesZuTOnzFe+zevZg0BYW55MuhMOtUylRD92QW2MZY8fzuM7Fk6CRnj/s+DF3jfiMNNIx4Tx4bgbEbAtAEESA6lJpMDvpLgm1RT21DgCXmNc/J</signature>
+    <managed>false</managed>
+    <name>重新初始化索引库</name>
+    <group>DEFAULT</group>
+    <desc>当某种特殊原因导致全文检索无效时，可执行该定时器将原来的KMS全文检索数据删除，全部重新入索引库</desc>
+    <disabled>false</disabled>
+    <system>false</system>
+    <classz>com.actionsoft.apps.kms.job.ReIndexFullsearch</classz>
+    <createDate>2018-02-27T11:23:48+08:00</createDate>
+    <triggerRule>6::0</triggerRule>
+    <userParam></userParam>
+    <lastToken></lastToken>
+    <concurrent>false</concurrent>
+    <categoryName>未分类</categoryName>
+    <stateful>false</stateful>
+</awsScheduleModel>

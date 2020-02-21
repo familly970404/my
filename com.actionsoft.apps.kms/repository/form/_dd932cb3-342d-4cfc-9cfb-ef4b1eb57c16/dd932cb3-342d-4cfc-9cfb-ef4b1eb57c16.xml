@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formModel>
+    <id>dd932cb3-342d-4cfc-9cfb-ef4b1eb57c16</id>
+    <createUser>admin</createUser>
+    <createTime>2016-08-25 19:51:40</createTime>
+    <updateUser></updateUser>
+    <updateTime>2019-07-25 11:00:38</updateTime>
+    <signature>DgQSSyFmOqrf7WQa6WFesZuTOnzFe+zevZg0BYW55MuhMOtUylRD92QW2MZY8fzu8BSgZGw7YxxvUMzseLjIVk0aHe47KKYp57SRiXkC/uZYj4mosOoH1lPdm8w+feFa</signature>
+    <managed>true</managed>
+    <title>取消发布(审批)</title>
+    <deleted>false</deleted>
+    <categoryName>取消发布</categoryName>
+    <administrator>admin</administrator>
+    <defaultLanguage></defaultLanguage>
+    <url>{"pc":"","mobile":""}</url>
+    <urlHeight>{"pc":"","mobile":""}</urlHeight>
+    <formItems>
+        <formItem>
+            <id>f3896f57-4874-44ad-8b82-cf3532e11c42</id>
+            <title>取消发布(审批)</title>
+            <templateFile>{"tablet":"取消发布-取消发布(审批).htm","pc":"取消发布-取消发布(审批).htm","mobile":"取消发布-取消发布(审批)_m.htm"}</templateFile>
+            <grid>false</grid>
+            <gridSetting></gridSetting>
+            <orderBy></orderBy>
+            <pageLimit>0</pageLimit>
+            <boModelId>68b2b7ec-959c-4a3f-9999-667c2ed6edf3</boModelId>
+            <dictionaryFileName></dictionaryFileName>
+            <hiddenHead>false</hiddenHead>
+            <theme>{"pc":"_bpm.platform","mobile":"_bpm.platform"}</theme>
+            <itemDisplays/>
+            <scheme>{"pc":"scheme_aws.css","mobile":"scheme_aws.css"}</scheme>
+            <calcFormula></calcFormula>
+            <conditionControl></conditionControl>
+            <validate></validate>
+            <icon></icon>
+            <gridControl></gridControl>
+            <summaryControl></summaryControl>
+            <ruleControl></ruleControl>
+            <hiddenFields></hiddenFields>
+            <hiddenAddBtn>false</hiddenAddBtn>
+        </formItem>
+    </formItems>
+</formModel>

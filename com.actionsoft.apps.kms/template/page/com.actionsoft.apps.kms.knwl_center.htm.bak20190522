@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../commons/css/awsui.css" />
+<script type="text/javascript" src="../commons/js/public.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+<script type="text/javascript" src="../commons/js/awsui.js"></script>
+
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.knwl_center.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.dimensionGrid.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.common.opt.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/aws.userinput.kms.js"></script>
+<script type="text/javascript" src="../apps/_bpm.platform/js/designer/extend/js/util/uuid.js"></script>
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.knwl_center.css" />
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.dimensionGrid.css" />
+
+<!--Grid-->
+<script src="../commons/js/jquery/scripts/ui/reference/jquery-ui.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid-localize-zh.js"></script>
+	<!--HTML EDITOR-->
+	<link type='text/css' rel='stylesheet' href='../commons/plug-in/ueditor/themes/default/css/ueditor.css' />
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.config.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.all.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/lang/zh-cn/zh-cn.js'></script>
+	<script type='text/javascript' src='../commons/js/jquery/scripts/ui/aws.ueditor.config.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.parse.js'></script>
+	<script type='text/javascript' src='../commons/js/jquery/scripts/jquery.md5.js'></script>
+
+<script type="text/javascript">
+	var sid = "<#sid>";
+	var uid = "<#uid>";
+	var maxFileSize = <#maxFileSize>;
+	var blackFileList = "<#blackFileList>";
+	var today = '<#today>';
+</script>
+	<style>
+		table.aws-grid-header-table div.aws-grid-header-table-div{
+			line-height:24px !important;
+		}
+
+		.aws-grid-header td.pq-col-sort-asc, .aws-grid-header td.pq-col-sort-desc{
+			background: #fefefe;
+			color: #6c98d1;
+		}
+		.window-mask{
+			background: #FFFFFF;
+			position: fixed;
+			width: 1000px;
+			top: 0px;
+			left: 0px;
+			opacity: 0.6;
+			filter: alpha(opacity=60);
+			z-index: 1;
+		}
+		.awsui-tab-curent-text{
+			color: white !important;
+		}
+	</style>
+</head>
+<body>
+	<div id="tabs">
+		<div style="float: left; margin-left: 240px; height: 50px; line-height: 50px;margin-right: 50px;">
+			<div id="dimensionPath" style="float: left; font-size: 13px; height: 50px;"></div>
+		</div>
+		<div class="reload-page-wrap" title="刷新" onclick="location.reload();">
+			<div class="reload-page"></div>
+		</div>
+	</div>
+	<div id="tabs-content">
+		<div index="nav-tab-all" id="tab-all" class="awsui-layout-iframe" style="overflow: hidden; display: none;">
+			<div id="all-right" class="all-right" style="left: -6px; z-index: 1;">
+				<div id="dimensionCardToolbar" class="awsui-toolbar">
+					<button id="publishCardBtnForAll" onclick="me.publishCardDialog('all')" type="button" class="button green" style="display: none;">发布</button>
+					<button id="moveCardBtn" onclick="me.moveKnwlDialog()" type="button" class="button blue" style="display: none;">移动 / 复制</button>
+					<span id="fullsearch_anchor" class="fullsearch_anchor">全文检索</span>
+				</div>
+			</div>
+		</div>
+		<div index="nav-tab-me" id="tab-me" class="awsui-layout-iframe layout" style="overflow: hidden; display: none;">
+			<div id="me-left" class="me-left" style="position: relative;">
+				<ul id="me-left-ul" class="me-left-ul">
+					<li>
+						<div id="me-left-me" class="child active">
+							<span class="child_me"></span> <span style="vertical-align: middle; margin-left: 6px;">我的知识</span><span id="meCount" class="operation" ><#meCount></span>
+						</div>
+					</li>
+					<li>
+						<div id="me-left-publish" class="child">
+							<span class="child_publish"></span> <span style="vertical-align: middle; margin-left: 6px;">我发布的</span><span id="publishCount" class="operation"><#publishCount></span>
+						</div>
+					</li>
+					<li>
+						<div id="me-left-borrow" class="child">
+							<span class="child_borrow"></span> <span style="vertical-align: middle; margin-left: 6px;">我借阅的</span><span id="borrowCount" class="operation"><#borrowCount></span>
+						</div>
+					</li>
+				</ul>
+				<div id="latestComment" style="position: absolute; width: 100%; top: 160px; bottom: 0; overflow: hidden;  border-top: 1px solid #DCDCDC"></div>
+			</div>
+			<div id="me-right" class="me-right">
+				<div id="me-right-me" class="me-right-child" style="display: none;">
+					<div id="me-toolbar" class="awsui-toolbar">
+						<button id="addKnwlBtn" type="button" class="button blue">新建</button>
+						<span class="button-group">
+							<button id="publishCardBtn" onclick="me.publishCardDialog('me')" type="button" class="button green" style="display: none;">发布</button>
+							<button id="deleteKnwlBtn" type="button" class="button red" style="display: none;">删除</button>
+						</span>
+						<button id="filterMeBtn" type="button" class="button white" style="margin-left: 5px; float: right;">过滤</button>
+						<input id="filterMeInput" type="text" placeholder="请输入知识名称或文件名称" class="txt" style="float: right; padding: 4px; width: 200px;">
+					</div>
+					<div id="me-grid" style="border-left: 0;"></div>
+				</div>
+				<div id="me-right-publish" class="me-right-child" style="display: none;">
+					<div id="publish-toolbar" class="awsui-toolbar">
+						<button id="filterPublishBtn" type="button" class="button white" style="margin-left: 5px; float: right;">过滤</button>
+						<input id="filterPublishInput" type="text" placeholder="请输入知识名称或文件名称" class="txt" style="float: right; padding: 4px; width: 200px;">
+					</div>
+					<div id="publish-grid" style="border-left: 0;"></div>
+					<form id="cancelPublishProcessForm" name="cancelPublishProcessForm" action="./w" method="post" target="cancelPublishProcessFrame">
+						<!-- 借阅form中使用了id,为了不重复,发布form不使用id -->
+						<input name="sid" type="hidden" value="<#sid>" />
+						<input name="cmd" type="hidden" value="com.actionsoft.apps.kms_knwl_center_cancel_publish_card_process_start">
+						<input name="publishId" type="hidden"/>
+					</form>
+					<div id='cancelPublishProcessDialog' style="display: none;">
+							<iframe id="cancelPublishProcessFrame" name="cancelPublishProcessFrame" frameBorder="0" style="width: 100%; height: 100%; border: 0;"></iframe>
+					</div>
+				</div>
+				<div id="me-right-borrow" class="me-right-child" style="display: none;">
+					<div id="borrow-toolbar" class="awsui-toolbar">
+						<button id="filterBorrowBtn" type="button" class="button white" style="margin-left: 5px; float: right;">过滤</button>
+						<input id="filterBorrowInput" type="text" placeholder="请输入知识名称" class="txt" style="float: right; padding: 4px; width: 200px;">
+					</div>
+					<div id="borrow-grid" style="border-left: 0;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<form id="publishProcessForm" name="publishProcessForm" action="./w" method="post" target="publishProcessFrame">
+		<!-- 借阅form中使用了id,为了不重复,发布form不使用id -->
+		<input name="sid" type="hidden" value="<#sid>" /> <input name="cmd" type="hidden" value="com.actionsoft.apps.kms_knwl_center_publish_card_process_start"> <input name="cardIds" type="hidden" /> <input name="dimensionId" type="hidden" /> <input name="schemaMetaData" type="hidden" /><input name="tags" type="hidden" /><input name="publishMemo" type="hidden" />
+	</form>
+	<div id='publishProcessDialog' style="display: none;">
+			<iframe id="publishProcessFrame" name="publishProcessFrame" frameBorder="0" style="width: 100%; height: 100%; border: 0;"></iframe>
+	</div>
+	<div id='moveCardDialog' style="display: none;">
+		<div class="dlg-content" style="height: 360px;">
+			<ul id="moveKnwlDimensionTree"></ul>
+		</div>
+	</div>
+</body>
+<input type="hidden" id="appId" value="<#appId>"/>
+</html>

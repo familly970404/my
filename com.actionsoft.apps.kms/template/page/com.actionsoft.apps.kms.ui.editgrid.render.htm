@@ -1,0 +1,28 @@
+function () {
+    var boDefName = "<#boDefName>";
+    var boItemDefName = "<#boItemDefName>";
+    var uiId = "<#uiId>";
+    var uiSetting =<#uiSetting>;
+    try{
+        if(showValueJO){
+        }
+    }catch(e){
+         showValueJO = <#showValueJO>;
+    }
+    return function () {
+        var record = ui.rowData;
+        var dataIndx = ui.dataIndx;
+        var value = record[dataIndx];
+        if(value && value !== ''){
+             if(record[boItemDefName+'_DISPLAYVALUE'] == undefined){
+                 record[boItemDefName+'_DISPLAYVALUE'] = showValueJO[record.ID];
+             }
+        }
+        value = UIUtil.showDisplayValue(record, boItemDefName, value);
+        var html = value;
+        if (html == "" && uiSetting.placeholder && $("#readonly").val() == "false") {
+            return "<div style='color:#a9a9a9;'>" + uiSetting.placeholder + "</div>";
+        }
+        return html;
+    }(ui, boDefName, boItemDefName, uiId, uiSetting,  $("#readonly").val() == "true");
+}(ui);

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<awsScheduleModel>
+    <id>8e15dcf6-35fb-45bd-9d8f-9012f3a13a49</id>
+    <createUser>admin</createUser>
+    <createTime>2016-09-21 11:19:58</createTime>
+    <updateUser></updateUser>
+    <updateTime>2019-08-17 19:38:43</updateTime>
+    <signature>DgQSSyFmOqrf7WQa6WFesZuTOnzFe+zevZg0BYW55MuhMOtUylRD92QW2MZY8fzu2jxJKYAvFH+5rJphZZXN8xmE/+CpL3ofs1vyB1ebcnEzxFwLWvM8Ym6j+xRNC3jb</signature>
+    <managed>false</managed>
+    <name>KMS重新加载缓存</name>
+    <group>DEFAULT</group>
+    <desc>重新将数据库数据加载到缓存中，预防某些极端异常导致的数据库数据和缓存不同步。可根据业务量调整执行计划，建议在系统空闲时执行。</desc>
+    <disabled>false</disabled>
+    <system>false</system>
+    <classz>com.actionsoft.apps.kms.job.ReloadCache</classz>
+    <createDate>2016-09-21T11:19:58+08:00</createDate>
+    <triggerRule>0:3:10</triggerRule>
+    <userParam></userParam>
+    <lastToken></lastToken>
+    <concurrent>false</concurrent>
+    <categoryName>未分类</categoryName>
+    <stateful>false</stateful>
+</awsScheduleModel>

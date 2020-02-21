@@ -1,0 +1,179 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+/* 自定义NumberBox样式，使之和input.txt对齐 */
+.awsui-numberbox-arrow {
+	height: 26px;
+}
+
+.forms-icon.down {
+	margin-top: 4px;
+}
+/*重写aws tab的css*/
+.awsui-tabs {
+	background-color: #F8F9FB;
+}
+
+.awsui-tabs-container.top {
+	border-bottom: 0;
+}
+
+.awsui-tabs-items.top {
+	margin: 0;
+	border-radius: 0;
+}
+
+.awsui-tabs-items {
+	padding: 0;
+	width: 90px;
+	height: 27px !important;
+	line-height: 27px !important;
+	border: 1px solid #DCDCDC !important;
+	margin-top: 10px !important;
+}
+
+.awsui-tabs-items.current {
+	background-color: #8a8a8a;
+	color: #f4f8fb;
+}
+
+.awsui-tabs-container {
+	padding-left: 14px;
+}
+
+.nav-tab-right-border {
+	border-right: 0 !important;
+}
+
+.nav-tab-left-border {
+	border-left: 0 !important;
+}
+
+.awsui-tabs-items .tab-icon {
+	background-image: url("../img/kms_icon.png");
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 6px;
+	margin-left: 20px;
+}
+
+.awsui-tabs-items .tab-icon.tab-icon-param {
+	background-position: -705px -207px;
+}
+
+.awsui-tabs-items.current .tab-icon.tab-icon-param {
+	background-position: -756px -208px;
+}
+
+.awsui-tabs-items .tab-icon.tab-icon-stat {
+	background-position: -209px -259px;
+}
+
+.awsui-tabs-items.current .tab-icon.tab-icon-stat {
+	background-position: --269px -259px;
+}
+/*重写aws toolbar*/
+.awsui-toolbar {
+	border-bottom: 0;
+	box-shadow: none;
+}
+/*重写aws grid*/
+div.aws-grid {
+	box-shadow: none;
+}
+div.aws-grid-header-table-div {
+	height: 24px;
+	line-height: 24px !important;
+}
+
+td div.pq-td-div {
+	height: 25px;
+	line-height: 25px !important;
+}
+
+td.checkboxColumn input[type=checkbox] {
+	margin-top: 10px;
+}
+
+.aws-grid-header td.pq-col-sort-asc, .aws-grid-header td.pq-col-sort-desc
+	{
+	background-position-y: -30px;
+}
+
+.pq-header-outer {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.table-thin {
+	border-top: 1px solid #dddddd;
+}
+
+.table>thead>tr>th {
+	font-size: 12px;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td,
+	.table>tbody>tr>td, .table>tfoot>tr>td {
+	line-height: 16px;
+}
+.table-thin>thead>tr>th, .table-thin>tbody>tr>th, .table-thin>tfoot>tr>th, .table-thin>thead>tr>td, .table-thin>tbody>tr>td, .table-thin>tfoot>tr>td {
+	border-color:#c5c5c5;
+	}
+.table-thin>thead>tr>th, .table-thin>thead>tr>td {
+	border-bottom: 1px;
+}
+
+.table-thin>thead>tr>th, .table-thin>thead>tr>td {
+	border-bottom: 1px solid ededed;
+}
+.aws-grid-header td.pq-col-sort-asc, .aws-grid-header td.pq-col-sort-desc {
+	background: none;
+}
+
+div.kms-no-record {
+    color: #AAAAAA;
+    text-align: center;
+    font-size: 14px  !important;
+    width: 100%;
+    height: 120px;
+    line-height: 120px  !important;
+    background: url(../img/no-record-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    cursor: default;
+}
+/*右上角刷新按钮*/
+.reload-page-wrap {
+	width: 30px;
+	height: 30px;
+	border: 0;
+	-webkit-border-radius: 39px;
+	border-radius: 39px;
+	background-color: #FFFFF;
+	cursor: pointer;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+
+.reload-page-wrap .reload-page {
+	height: 30px;
+	width: 30px;
+	background: url('../img/reload-page-white.png') 0px 0px no-repeat;
+}
+
+.reload-page-wrap:HOVER .reload-page {
+	background: url('../img/reload-page-gray.png') 0px 0px no-repeat;
+}

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../commons/css/awsui.css" />
+<script type="text/javascript" src="../commons/js/public.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+<script type="text/javascript" src="../commons/js/awsui.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.system_mgr.js"></script>
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.system_mgr.css" />
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/aws.userinput.kms.js"></script>
+<!--Grid-->
+<script src="../commons/js/jquery/scripts/ui/reference/jquery-ui.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid-localize-zh.js"></script>
+<!-- echart -->
+<script type="text/javascript" src="../commons/js/jquery/scripts/ui/echarts/echarts.min.js"></script>
+<script type="text/javascript">
+	var sid = "<#sid>";
+</script>
+</head>
+<body>
+	<div id="tabs">
+		<div class="reload-page-wrap" title="刷新" onclick="location.reload();">
+			<div class="reload-page"></div>
+		</div>
+	</div>
+	<div id="tabs-content">
+		<div index="nav-tab-param" id="tab-param" class="awsui-layout-iframe" style="overflow: hidden; display: none;">
+			<div style="width: 500px; float: left; border-right: 1px solid #DCDCDC; height: 100%;">
+				<div class="awsui-toolbar">
+					<button id="saveSystemParam" type="button" class="button blue" onclick="saveSystemParam()">保存</button>
+				</div>
+				<table id="param-table" class="table table-thin">
+					<thead>
+						<tr>
+							<th style="width: 20px;"></th>
+							<th style="width: 180px;">参数名称</th>
+							<th style="width: auto;">参数值</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>单文件上传最大值（MB）</td>
+							<td><input type="text" id="maxFileSize" class="txt" style="height: 22px; width: 147px;" /></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>文件后缀上传黑名单</td>
+							<td>
+								<div id="usersuper" class="awsui-superinput" style="width: 222px;">
+									<input id="blackFileList" placeholder="回车添加文件后缀" value="" type="text">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>分页列表每页的行数</td>
+							<td><input type="text" id="gridRowPP" class="txt" style="height: 22px; width: 147px;" /></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>浏览器直接预览的文件后缀</td>
+							<td>
+								<div id="browserPreviewWrap" class="awsui-superinput" style="width: 222px;">
+									<input id="browserPreview" placeholder="回车添加文件后缀" value="" type="text">
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="float: left;">
+				<div>
+					<div id="param-toolbar" class="awsui-toolbar">
+						<button id="addVersionBtn" type="button" class="button blue" onclick="addVersion()">新建版本号</button>
+						<button id="deleteVersionBtn" type="button" class="button red" style="display: none;" onclick="deleteVersion()">删除</button>
+					</div>
+					<div id="version-grid" style="border-left: 0;"></div>
+					<div id='versionDialog' style="display: none;">
+						<table class="awsui-ux" style="padding: 10px 10px;">
+							<colgroup>
+								<col class="awsui-ux-title" style="width: 25%;">
+								<col style="width: 75%;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<td class="awsui-ux-title">版本号</td>
+									<td><span class="required"> <input id="versionNo" name="versionNo" type="text" class="txt" style="width: 220px;" placeholder="请输入整数或小数..." />
+									</span></td>
+								</tr>
+								<tr>
+									<td class="awsui-ux-title">描述</td>
+									<td><textarea id="memo" style="width: 220px; height: 80px;" class="txt awsui-textarea"></textarea></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div>
+					<div id="param-toolbar" class="awsui-toolbar">
+						<button id="addHotspotDefBtn" type="button" class="button blue" onclick="addHotspotDef()">新建知识地图</button>
+						<button id="deleteHotspotDefBtn" type="button" class="button red" style="display: none;" onclick="deleteHotspotDef()">删除</button>
+					</div>
+					<div id="hotspot-def-grid" style="border-left: 0;"></div>
+					<div id='hotspotDefDialog' style="display: none;">
+						<table class="awsui-ux" style="padding: 10px 10px;">
+							<colgroup>
+								<col class="awsui-ux-title" style="width: 25%;">
+								<col style="width: 75%;">
+							</colgroup>
+							<tbody>
+								<tr>
+									<td class="awsui-ux-title">知识地图</td>
+									<td><span class="required"> <input id="hotspotName" name="" hotspotName"" type="text" class="txt" style="width: 220px;" readonly="true" placeholder="点击上传知识地图" />
+									</span></td>
+								</tr>
+								<tr>
+									<td class="awsui-ux-title">描述</td>
+									<td><textarea id="hotspotDefMemo" style="width: 220px; height: 80px;" class="txt awsui-textarea"></textarea></td>
+								</tr>
+								<input id="hotspotMetaId" type="hidden" />
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div index="nav-tab-img" id="tab-img" class="awsui-layout-iframe" style="overflow: hidden; display: none;"></div>
+		<div index="nav-tab-stat" id="tab-stat" class="awsui-layout-iframe layout" style="overflow: hidden; display: none;">
+			<div id="statChart" style="width: 100%; height: 100%;"></div>
+		</div>
+	</div>
+
+</body>
+</html>

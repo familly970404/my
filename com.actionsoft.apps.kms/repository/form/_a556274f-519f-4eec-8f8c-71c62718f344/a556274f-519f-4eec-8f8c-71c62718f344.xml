@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formModel>
+    <id>a556274f-519f-4eec-8f8c-71c62718f344</id>
+    <createUser>admin</createUser>
+    <createTime>2016-06-27 18:40:28</createTime>
+    <updateUser></updateUser>
+    <updateTime>2019-07-25 10:56:41</updateTime>
+    <signature>DgQSSyFmOqrf7WQa6WFesZuTOnzFe+zevZg0BYW55MuhMOtUylRD92QW2MZY8fzu1gxOGhKhouhonIxIZUhEZQWqSzJfmm7hXpd0qDgUgE57iEIE68ZTr35DZVUgYFRP</signature>
+    <managed>true</managed>
+    <title>发布(申请)</title>
+    <deleted>false</deleted>
+    <categoryName>发布</categoryName>
+    <administrator>admin</administrator>
+    <defaultLanguage></defaultLanguage>
+    <url>{"pc":"","mobile":""}</url>
+    <urlHeight>{"pc":"","mobile":""}</urlHeight>
+    <formItems>
+        <formItem>
+            <id>b17863c3-5aa0-4d65-af95-99a9c6b85e2d</id>
+            <title>发布(申请)</title>
+            <templateFile>{"tablet":"发布-发布(申请).htm","pc":"发布-发布(申请).htm","mobile":"发布-发布(申请)_m.htm"}</templateFile>
+            <grid>false</grid>
+            <gridSetting></gridSetting>
+            <orderBy></orderBy>
+            <pageLimit>0</pageLimit>
+            <boModelId>7f568ec6-21f8-4e79-8682-d37762cfdfff</boModelId>
+            <dictionaryFileName></dictionaryFileName>
+            <hiddenHead>false</hiddenHead>
+            <theme>{"pc":"_bpm.platform","mobile":"_bpm.platform"}</theme>
+            <itemDisplays/>
+            <scheme>{"pc":"scheme_aws.css","mobile":"scheme_aws.css"}</scheme>
+            <calcFormula></calcFormula>
+            <conditionControl></conditionControl>
+            <validate></validate>
+            <icon></icon>
+            <gridControl></gridControl>
+            <summaryControl></summaryControl>
+            <ruleControl></ruleControl>
+            <hiddenFields></hiddenFields>
+            <hiddenAddBtn>false</hiddenAddBtn>
+        </formItem>
+    </formItems>
+</formModel>

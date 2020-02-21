@@ -1,0 +1,282 @@
+.dimension-path {
+	opacity: 0.3;
+	filter: Alpha(opacity =       30);
+	moz-opacity: 0.3;
+	padding: 0 6px;
+	margin: 0 6px 0 1px;
+	background-image: url("../img/dimensionpath.png");
+	width: 10px;
+	position: relative;
+	top:1px;
+}
+
+.fullsearch_anchor {
+	float: right;
+	font-size: 12px;
+	text-decoration: underline;
+	margin-top: 4px;
+	color: #0E6BCB;
+	cursor: pointer;
+}
+/*知识中心*/
+.me-left {
+	width: 230px;
+	height: 100%;
+	float: left;
+	left: 0px;
+	border-right: 1px solid #DCDCDC;
+	float: left;
+}
+
+.me-right {
+	margin-left: 231px;
+	height: 100%;
+}
+
+.me-left-ul {
+	margin-top: 10px;
+}
+
+.me-left-ul div {
+	font-size: 16px;
+	cursor: pointer;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 25px;
+	font-weight: bold;
+}
+
+.me-left-ul div.active {
+	background-color: #F1F1F1;
+}
+
+.me-left-ul div.active:BEFORE {
+	content: '';
+	border-left: 2px solid #A7A7A7;
+	border-right: 2px solid #A7A7A7;
+	height: 40px;
+	position: absolute;
+	left: 0;
+}
+
+.me-left-ul .child {
+	padding-left: 55px;
+	font-weight: normal;
+}
+
+.me-left-ul .child .child_me {
+	background: url('../img/kms_icon.png') no-repeat -576px -105px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 14px;
+	height: 16px;
+}
+
+.me-left-ul .child .child_publish {
+	background: url('../img/kms_icon.png') no-repeat -638px -105px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 14px;
+	height: 16px;
+}
+
+.me-left-ul .child .child_borrow {
+	background: url('../img/kms_icon.png') no-repeat -751px -108px;
+	display: inline-block;
+	vertical-align: middle;
+	width: 14px;
+	height: 16px;
+}
+
+.me-right-child {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.schemaLI {
+	border-bottom: 1px solid #e7e7e7;
+}
+
+.schema-title {
+	color: black;
+	font-size: 14px;
+}
+
+.schema-attr-list {
+	display: inline-block;
+	padding: 0 5px 5px 5px;
+}
+
+.schema-attr-list li {
+	float: left;
+	margin: 3px 10px 0 0;
+}
+
+.schema-required {
+	color: red;
+	vertical-align: middle;
+	margin-left: 3px;
+}
+
+.nameAnchor:HOVER {
+	background-color: #e0e4e7;
+	cursor: pointer;
+	height: 20px;
+}
+
+#fileTable td {
+	border-top: 0;
+}
+
+/*重写aws tab的css*/
+.awsui-tabs {
+	background-color: #F8F9FB;
+}
+
+.awsui-tabs-container.top {
+	border-bottom: 0;
+}
+
+.awsui-tabs-items.top {
+	margin: 0;
+	border-radius: 0;
+}
+
+.awsui-tabs-items {
+	padding: 0;
+	width: 90px;
+	height: 27px !important;
+	line-height: 27px !important;
+	border: 1px solid #DCDCDC !important;
+	margin-top: 10px !important;
+}
+
+.awsui-tabs-items.current {
+	background-color: #8a8a8a;
+	color: #f4f8fb;
+}
+
+.awsui-tabs-container {
+	padding-left: 14px;
+}
+
+.nav-tab-all-right-border {
+	border-right: 0 !important;
+}
+
+.nav-tab-me-left-border {
+	border-left: 0 !important;
+}
+
+.awsui-tabs-items .tab-icon {
+	background-image: url("../img/kms_icon.png");
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 6px;
+	margin-left: 20px;
+}
+
+.awsui-tabs-items .tab-icon.tab-icon-all {
+	background-position: -68px -163px;
+}
+
+.awsui-tabs-items.current .tab-icon.tab-icon-all {
+	background-position: -67px -65px;
+}
+
+.awsui-tabs-items .tab-icon.tab-icon-me {
+	background-position: -132px -63px;
+}
+
+.awsui-tabs-items.current .tab-icon.tab-icon-me {
+	background-position: -131px -163px;
+}
+
+/*左侧评论区*/
+.left-comment-wrap {
+	position: relative;
+}
+
+.left-comment-wrap .img-wrap {
+	width: 30px;
+	float: left;
+	padding-left: 5px;
+	padding-top: 2px;
+}
+
+.left-comment-wrap .img-wrap img {
+	width: 28px;
+	height: 28px;
+	border-radius: 28px;
+}
+
+.left-comment-wrap .right-wrap {
+	float: left;
+	width: 185px;
+	margin-right: 5px;
+	padding-left: 5px;
+	border-bottom: 1px solid #dedfe1;
+}
+
+.left-comment-wrap .right-wrap .author {
+	height: 32px;
+	line-height: 32px;
+	color: #666;
+	font-size: 12px;
+}
+
+.left-comment-wrap .right-wrap .author span {
+	display: inline-block;
+	line-height: 32px;
+	height: 32px;
+}
+
+.left-comment-wrap .right-wrap .word {
+	color: #484848;
+	height: 25px;
+	line-height: 25px;
+	margin-right: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/*右上角刷新按钮*/
+.reload-page-wrap {
+	width: 30px;
+	height: 30px;
+	border: 0;
+	-webkit-border-radius: 39px;
+	border-radius: 39px;
+	background-color: #FFFFF;
+	cursor: pointer;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+
+.reload-page-wrap .reload-page {
+	height: 30px;
+	width: 30px;
+	background: url('../img/reload-page-white.png') 0px 0px no-repeat;
+}
+
+.reload-page-wrap:HOVER .reload-page {
+	background: url('../img/reload-page-gray.png') 0px 0px no-repeat;
+}
+
+div.no-latest-comment {
+	color: #AAAAAA;
+	text-align: center;
+	font-size: 14px !important;
+	width: 100%;
+	height: 160px;
+	line-height: 160px !important;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	cursor: default;
+}

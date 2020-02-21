@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<app xmlns="http://www.actionsoft.com.cn/app">  
+  <name>KMS知识管理</name>  
+  <version>1.4</version>  
+  <buildNo>11</buildNo>  
+  <developer id="776cca9a287c8b4d63b9cad216aa3859" tablePrefix="ACT" url="http://www.actionsoft.com.cn">AWSPaaS-EndUser</developer>  
+  <categoryVisible>true</categoryVisible>  
+  <description><![CDATA[场景化的专业知识管理门户]]></description>  
+  <details><![CDATA[企业级知识管理系统，帮助企业系统有效的组织、获取、存储和共享知识。<br>
+<b>主要特点</b><br>
+- 穿透文档内容，一站式知识门户
+- 共享知识并与内容交互
+- 提取并管理元数据以方便查找
+- 场景化交互的知识地图
+- 对知识内容的生命周期管理
+- 多渠道集成知识内容
+- 适用于企业的安全控制
+
+<b>功能依赖</b><br>
+ -在线预览文件依赖 [文档预览服务] （图片等浏览器支持的格式除外）
+ -全文检索功能依赖 [全文检索引擎] 
+ -阅读邀请功能依赖 [通知中心] 和 [工作网络] 
+ -收藏功能依赖 [我的收藏]]]></details>  
+  <installListener/>  
+  <pluginListener>com.actionsoft.apps.kms.Plugins</pluginListener>  
+  <startListener/>  
+  <stopListener/>  
+  <upgradeListener/>  
+  <uninstallListener/>  
+  <reloadable>true</reloadable>  
+  <requires> 
+    <require appId="com.actionsoft.apps.addons.es" notActiveHandler="warning"/>  
+    <require appId="com.actionsoft.apps.favorite" notActiveHandler="none"/>  
+    <require appId="com.actionsoft.apps.addons.onlinedoc" notActiveHandler="none"/>  
+    <require appId="com.actionsoft.apps.notification" notActiveHandler="none"/>  
+    <require appId="com.actionsoft.apps.addons.xpages" notActiveHandler="none"/>  
+    <require appId="com.actionsoft.apps.dict" notActiveHandler="none"/> 
+  </requires>  
+  <allowStartup>true</allowStartup>  
+  <allowUpgradeByStore>true</allowUpgradeByStore>  
+  <depend versions="6.2">_bpm.portal</depend>  
+  <installDate>2019-12-06 11:28:25</installDate>  
+  <productId>00000000000000000000000000000000</productId>  
+  <properties> 
+    <property action="disabled" group="参数" name="systemParam" title="知识参数" type="textarea" isSystem="false" desc="" ref="">{"browserPreview":"ico","maxFileSize":"2000","blackFileList":"exe@`@bat@`@sh","gridRowPP":"100"}</property>  
+    <property action="edit" group="文件分类配置" name="picture" title="图片格式" type="input" isSystem="false" desc="文件分类-图片">png,gif,jpg,jpeg,psd,bmp,pcx,pic</property>  
+    <property action="edit" group="文件分类配置" name="doc" title="文档格式" type="input" isSystem="false" desc="文件分类-文档">doc,docx,ppt,pptx,xls,xlsx,txt,pdf,wps,wpt,dps,dpt,pps,et,ett,csv,md</property>  
+    <property action="edit" group="文件分类配置" name="video" title="视频格式" type="input" isSystem="false" desc="文件分类-视频">avi,mpg,wmv,3gp,mkv,asf,swf,mov,xv,rmvb,rm,mp4,flv</property>  
+    <property action="edit" group="文件分类配置" name="audio" title="音频格式" type="input" isSystem="false" desc="文件分类-音频">mp3,ape,wma,wav,mpeg</property>  
+    <property action="edit" group="参数" name="dimensionPermRule" title="维度权限规则" type="combox" isSystem="false" desc="修改后需要重启应用" ref="不配置权限无权限:0|不配置权限有权限:1">1</property>  
+    <property action="edit" group="参数" name="knwlsearchpage" title="知识门户页面" type="combox" isSystem="false" desc="" ref="知识列表:1|知识相关TOP排行:2">1</property>  
+    <property action="edit" group="参数" name="extendsLinks" title="扩展附加的频道" type="textarea" isSystem="false" desc="JSON数组 每一个频道是一个JSON 包括属性 title（链接名称）url（链接地址）" ref="">[{title:'CNKI',url:'http://www.baidu.com'}]</property>  
+    <property action="edit" group="参数" name="hasOnlineLevel" title="是否开启格式转换" type="combox" isSystem="false" desc="" ref="是:1|否:0">1</property>  
+    <property action="edit" group="参数" name="ACPUBLISH" title="发布权限策略" type="combox" isSystem="false" desc="" ref="不配置没有发布权限:0|需要审批维度,不配置需要审批，配置无需审批直接发布;不需审批维度,不配置没有发布权限:1">0</property> 
+  </properties>  
+  <releaseDate>2019-12-04</releaseDate>  
+  <upgradeDate>2019-01-08 19:48:07</upgradeDate>  
+  <modelAdministrator/>  
+  <deployment> 
+    <system id="obj_5d377d80a096415cb9f4b8b08ec718ab" icon16="../apps/com.actionsoft.apps.kms/img/icon20.png" icon64="../apps/com.actionsoft.apps.kms/img/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/icon96.png" notifier="" name="%u77E5%u8BC6%u5E93" target="mainFrame" url="/" deployUrlType="2" source="0"> 
+      <directory id="obj_fcb273516f814abeb27ce386efcfd7a6" icon16="../apps/com.actionsoft.apps.kms/img/function_icon/knwlPortal/icon20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/knwlPortal/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/knwlPortal/icon96.png" notifier="" name="%u53EF%u9605%u6587%u4EF6" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_knwl&amp;page=search" deployUrlType="2" source="0" orderIndex="1"/>  
+      <directory id="obj_3c5dfcaa7da64e328fe72cf28d158f04" icon16="../apps/com.actionsoft.apps.kms/img/nav_tree_20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/knwlCenter/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/knwlCenter/icon96.png" notifier="" name="%u53EF%u501F%u6587%u4EF6" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_knwl&amp;page=center" deployUrlType="2" source="0" orderIndex="2"/>  
+      <directory id="obj_074a0aa665cf48c0a0f1ce1d7536c276" icon16="../apps/com.actionsoft.apps.kms/img/icon20.png" icon64="../apps/com.actionsoft.apps.kms/img/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/icon96.png" notifier="" name="%u77E5%u8BC6%u5E93" target="mainFrame" url="/" deployUrlType="2" source="0" orderIndex="3"> 
+        <function id="obj_9db6edd0ccf5433f82fe0af6fd67b7cc" icon16="../apps/com.actionsoft.apps.kms/img/function_icon/knwlPortal/icon20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/knwlPortal/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/knwlPortal/icon96.png" notifier="" name="%u77E5%u8BC6%u95E8%u6237" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_knwl&amp;page=search" deployUrlType="2" source="0" orderIndex="1"/>  
+        <function id="obj_21d0b756a48946ccb5d38668f32943b2" icon16="../apps/com.actionsoft.apps.kms/img/nav_tree_20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/knwlCenter/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/knwlCenter/icon96.png" notifier="" name="%u77E5%u8BC6%u4E2D%u5FC3" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_knwl&amp;page=center" deployUrlType="2" source="0" orderIndex="2"/> 
+      </directory>  
+      <directory id="obj_baa3cbfe5b4f4154bde3b2ce2a73e7d5" icon16="../commons/img/setting_20.png" icon64="../apps/com.actionsoft.apps.kms/img/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/icon96.png" notifier="" name="%u77E5%u8BC6%u5E93%u7BA1%u7406" target="mainFrame" url="/" deployUrlType="2" source="0" orderIndex="4"> 
+        <function id="obj_4f48f895966349beb2bd3e01bda46b69" icon16="../commons/img/setting_20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/dimensionMgr/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/dimensionMgr/icon96.png" notifier="" name="%u7EF4%u5EA6%u7BA1%u7406" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_mgr&amp;page=knwl&amp;tab=dimension" deployUrlType="2" source="0" orderIndex="1"/>  
+        <function id="obj_9acae9a8b50142daac7d98efda6d13d6" icon16="../commons/img/setting_20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/metaMgr/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/metaMgr/icon96.png" notifier="" name="%u5143%u6570%u636E%u7BA1%u7406" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_mgr&amp;page=knwl&amp;tab=metaSchema" deployUrlType="2" source="0" orderIndex="2"/>  
+        <function id="obj_28b304cc5bad4636adfa780f45317033" icon16="../commons/img/setting_20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/validdateMgr/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/validdateMgr/icon96.png" notifier="" name="%u6709%u6548%u671F%u7BA1%u7406" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_mgr&amp;page=knwl&amp;tab=periofvali" deployUrlType="2" source="0" orderIndex="3"/>  
+        <function id="obj_50e47d2f2cac4738b4b819bf68dc1f81" icon16="../commons/img/setting_20.png" icon64="../apps/com.actionsoft.apps.kms/img/function_icon/systemMgr/icon64.png" icon96="../apps/com.actionsoft.apps.kms/img/function_icon/systemMgr/icon96.png" notifier="" name="%u7CFB%u7EDF%u7BA1%u7406" target="mainFrame" url="./w?sid=@sid&amp;cmd=com.actionsoft.apps.kms_mgr&amp;page=system" deployUrlType="2" source="0" orderIndex="4"/> 
+      </directory> 
+    </system> 
+  </deployment>  
+  <unInstallDate>2019-08-01 17:28:27</unInstallDate> 
+</app>

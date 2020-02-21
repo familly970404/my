@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+	<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<title>知识详情</title>
+<link rel="stylesheet" href="../commons/css/awsui.css" />
+<script type="text/javascript" src="../commons/js/public.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+<script type="text/javascript" src="../commons/js/awsui.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.browsecard.js"></script>
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.browsecard.css" />
+	<script id="ratyScript" type="text/javascript" src="../apps/com.actionsoft.apps.kms/raty/jquery.raty.min.js"></script>
+	<script type="text/javascript" src="../apps/_bpm.portal/js/ui/client.ui.js"></script>
+<style type="text/css">
+</style>
+<script type="text/javascript">
+	var sid = "<#sid>";
+	var uid = "<#uid>";
+	var canPreviewType = "<#canPreviewType>";
+	var browserPreview = '<#browserPreview>';
+	var mePhoto = "<#mePhoto>";
+	var isFavoriteAppActive = <#isFavoriteAppActive>;
+	var isOnlinedocAppActive = <#isOnlinedocAppActive>;
+	var isNetworkAppActive = <#isNetworkAppActive>;
+	var cardId = '<#cardId>';
+	var today = '<#today>';
+	var label1 = "<#label1>";
+	var label2 = "<#label2>";
+	var label3 = "<#label3>";
+	var hasOnlineLevel = "<#hasOnlineLevel>";
+	$(function(){
+		initbrowsecard();
+		function initbrowsecard(){
+			// 绑定打包下载的按钮事件
+			$('button[name=packageFiles]').off('click').on('click', {
+				'cardId': cardId
+			}, packageFiles);
+			/*// 阅读邀请的按钮事件
+			$('span[name=browseInvitation]').off('click').on('click', {
+				'cardId': cardId
+			}, browseInvitationDialog);
+			// 绑定收藏/取消收藏的按钮事件
+			$('span[name=collectCard]').off('click').on('click', {
+				'cardId': cardId
+			}, collectCard);
+			// 绑定反馈按钮事件
+			$('span[name=reportCard]').off('click').on('click', {
+				'cardId': cardId,
+				'dimensionId': ''
+			}, reportCardDialog);
+			// 绑定反馈popbox的提交事件
+			$('#reportButton').off('click').on('click', {
+				'cardId': cardId
+			}, reportCard);*/
+			// 请求浏览所需的数据
+			awsui.ajax.request({
+				url: "./jd",
+				method: "POST",
+				//loading: true,
+				data: {
+					sid: sid,
+					cmd: "com.actionsoft.apps.kms_knwl_center_browse_card_info_json",
+					cardId: cardId,
+					isBorrow: false,
+					boId: "",
+					isEdit: false,
+					dimensionId: ''
+				},
+				ok: function (responseObject) {
+					var isRate = responseObject.data.isRate;
+					if (isRate === 1) {
+						$('div[name=ratingWrap]').show();
+					} else {
+						$('div[name=ratingWrap]').hide();
+					}
+					// 编号,作者
+					$('img[name=cardCreateUserPhoto]').attr('src', responseObject.data.createUserPhoto);
+					$('span[name=cardCreateUsername]').text(responseObject.data.createUsername);
+					$('span[name=cardCreateDept]').text(responseObject.data.createUserDept);
+					// 评分组件
+					var rateId = responseObject.data.rateId;
+					var rateLevel = responseObject.data.rateLevel;
+					$('div[name=rateDiv]').raty({
+						score: rateLevel,
+						cancel: false,
+						cancelPlace: 'right',
+						cancelHint: '取消评分',
+						noRatedMsg: '',
+						hints: ['', '', '', '', ''],
+						cancelOff: '../apps/com.actionsoft.apps.kms/raty/img/cancel-off.png',
+						cancelOn: '../apps/com.actionsoft.apps.kms/raty/img/cancel-on.png',
+						size: 16,
+						starOff: '../apps/com.actionsoft.apps.kms/raty/img/star-off.png',
+						starOn: '../apps/com.actionsoft.apps.kms/raty/img/star-on.png',
+						click: function (score, evt) {
+							if (rateLevel === score) { // 取消评分
+								$('div[name=rateDiv]').raty('cancel', true);
+								return false;
+							}
+							// 评分
+							awsui.ajax.request({
+								url: "./jd",
+								method: "POST",
+								//loading: true,
+								data: {
+									sid: sid,
+									cmd: "com.actionsoft.apps.kms_knwl_center_rate_card",
+									rateId: rateId,
+									cardId: cardId,
+									rateLevel: score
+								},
+								success: function (responseObject) {
+									rateId = responseObject.data.newRateId;
+									rateLevel = score;
+									//刷新知识tab
+									initbrowsecard();
+								}
+							});
+						}
+					});
+					// 评分信息
+					var rates = responseObject.data.rates;
+					if ((rates['1'] + rates['2'] + rates['3'] + rates['4'] + rates['5']) != 0) {
+						// 平均值
+						var totalScore = rates['1'] * 1 + rates['2'] * 2 + rates['3'] * 3 + rates['4'] * 4 + rates['5'] * 5;
+						var avgScore = (totalScore / (rates['1'] + rates['2'] + rates['3'] + rates['4'] + rates['5'])).toFixed(1);
+						$('strong[name=avgScore]').text(avgScore);
+						$('div[name=avgRate]').raty({
+							readOnly: true,
+							noRatedMsg: '',
+							score: avgScore,
+							hints: ['', '', '', '', ''],
+							size: 12,
+							starOff: '../apps/com.actionsoft.apps.kms/raty/img/star-off.png',
+							starHalf: '../apps/com.actionsoft.apps.kms/raty/img/star-half.png',
+							starOn: '../apps/com.actionsoft.apps.kms/raty/img/star-on.png'
+						});
+						// 评分人数
+						var rateUserCounts = rates['1'] + rates['2'] + rates['3'] + rates['4'] + rates['5'];
+						$('span[name=rateUserCounts]').text(rateUserCounts);
+						// 某星评分比例
+						$('span[name=fiveStar]').text(((rates['5'] / rateUserCounts) * 100).toFixed(1) + '%');
+						$('span[name=fourStar]').text(((rates['4'] / rateUserCounts) * 100).toFixed(1) + '%');
+						$('span[name=threeStar]').text(((rates['3'] / rateUserCounts) * 100).toFixed(1) + '%');
+						$('span[name=twoStar]').text(((rates['2'] / rateUserCounts) * 100).toFixed(1) + '%');
+						$('span[name=oneStar]').text(((rates['1'] / rateUserCounts) * 100).toFixed(1) + '%');
+						$('div[name=fiveStarBar]').width(((rates['5'] / rateUserCounts) * 100 * 1.5).toFixed(1));
+						$('div[name=fourStarBar]').width(((rates['4'] / rateUserCounts) * 100 * 1.5).toFixed(1));
+						$('div[name=threeStarBar]').width(((rates['3'] / rateUserCounts) * 100 * 1.5).toFixed(1));
+						$('div[name=twoStarBar]').width(((rates['2'] / rateUserCounts) * 100 * 1.5).toFixed(1));
+						$('div[name=oneStarBar]').width(((rates['1'] / rateUserCounts) * 100 * 1.5).toFixed(1));
+						$('div[name=percentDiv]').show();
+					} else {
+						$('strong[name=avgScore]').text(0);
+						$('div[name=avgRate]').raty({
+							readOnly: true,
+							noRatedMsg: '',
+							score: 0,
+							hints: ['', '', '', '', ''],
+							size: 12,
+							starOff: '../apps/com.actionsoft.apps.kms/raty/img/star-off.png',
+							starHalf: '../apps/com.actionsoft.apps.kms/raty/img/star-half.png',
+							starOn: '../apps/com.actionsoft.apps.kms/raty/img/star-on.png'
+						});
+						$('span[name=rateUserCounts]').text(0);
+						$('div[name=percentDiv]').hide();
+					}
+					$("div[name=avgRate] img").css("width","12px");
+					if (responseObject.data.onlineLevel === 0) {
+						$('button[name=packageFiles]').hide();
+					} else if (responseObject.data.onlineLevel === 1) {
+						$('button[name=packageFiles]').show();
+					}
+					var cardContext = responseObject.data.cardContext;
+					if (cardContext == "") {
+						$("#cardContext-readOnly").hide();
+					} else {
+						$("#cardContext-readOnly").show();
+					}
+					$("#cardContext-readOnly").html(cardContext);
+					$('table[name=attachTable] tr[id!=attachColTR]').remove();
+					var files = responseObject.data.files;
+					if (files.length === 0) {
+						$('table[name=attachTable]>tbody').append('<tr><td colspan="10" style="text-align: center;"><div class="kms-no-file">无文件</div></td></tr>');
+					} else {
+						for (var i = 0; i < files.length; i++) {
+							var file = files[i];
+							var tr = "<tr>";
+							if (file.fileState == 2) {
+								tr += '<td height=60px style="padding:10px 0px">' +
+									'<div style="position:relative;height:100%">'+
+									'<div class="file_icon file-type-'+file.fileSuffixIcon +'" ></div>'+
+									'<div style="cursor:pointer;color:#0000EE;position:absolute;top:0px;left:30px;" class="browse_file_name"   title="' + file.fileNameNoVersion + '"><a href="javascript:" onclick="browserPreviewFun(\'' + tabId + '\',\'' + file.id + '\',\'' + encodeURIComponent(file.fileNameNoVersion) + '\',\'0\',\'' + file.createUserPhoto + '\',\'' + file.createUser + '\');return false;">' + file.fileNameNoVersion + '</a></div>'+
+									'</div>'+
+									'</td>';
+							} else {
+								var fileType = file.fileNameNoVersion.lastIndexOf(".") > -1 ? file.fileNameNoVersion.substring(file.fileNameNoVersion.lastIndexOf(".") + 1, file.fileNameNoVersion.length) : "";
+								tr += '<td height=60px style="padding:10px 0px">' +
+									'<div style="position:relative;height:100%">'+
+									'<div class="file_icon file-type-'+file.fileSuffixIcon +'" ></div>'+
+									'<div style="cursor:pointer;color:#0000EE;position:absolute;top:0px;left:30px;" class="browse_file_name"  afileid="obj_a831f88b910640e3957128a15bb495be" awsui-qtip="'+file.fileNameNoVersion+'">'+file.downloadUrlHtml+'</div>'+
+									'<div class="file_downloadcount" style="position:absolute;left:30px;top:20px;font-size:12px;color:#c1c1c1">下载次数：'+file.downloadCount+'次</div>'+
+									'<div class="file_size" style="position:absolute;right:10px;top:20px;font-size:12px;color:#c1c1c1">'+ AWSFile.formatSize(file.fileSize) + '</div>'+
+									'</div>'+
+									'</td>';
+							}
+							tr+='<td height=60px style="padding:10px 0px">\n' +
+								'<div style="position:relative;height:100%">' +
+								'<div class="file_createuser" style="position:absolute;right:0px;color:#666666">'+ file.createUsername +'</div>' +
+								'<div class="file_createdate" style="position:absolute;right:0px;top:20px;color:#c1c1c1">'+ file.createTime +'</div>' +
+								'</div>' +
+								'</td>';
+							//tr += "<td class='browse_createuser'>" + file.createUsername + "</td><td>" + AWSFile.formatSize(file.fileSize) + "</td><td style='text-align: center;'>" + file.createTime + "</td><td style='text-align: center;'>" + file.downloadCount + "</td></tr>";
+							$('table[name=attachTable]>tbody').append(tr);
+						}
+					}
+				}
+			});
+		}
+		/**
+		 * 打包下载
+		 *
+		 * @param event
+		 * @returns
+		 */
+		function packageFiles(event) {
+			var cardId = event.data.cardId;
+			awsui.ajax.request({
+				url: "./jd",
+				method: "POST",
+				alert: false,
+				//loading: true,
+				data: {
+					sid: sid,
+					cmd: "com.actionsoft.apps.kms_knwl_center_package_files",
+					cardId: cardId
+				},
+				success: function (responseObject) {
+					if (responseObject.result === 'ok') { // 返回下载url
+						$(document.body).append("<a id='packageFilesHref' style='display:none;' href='" + responseObject.msg + "'>tmp</a>");
+						$('#packageFilesHref')[0].click();
+						$('#packageFilesHref').remove();
+					} else {
+						$.simpleAlert(responseObject.msg, "error");
+					}
+				}
+			});
+		}
+
+		/**
+		 * 阅读邀请
+		 */
+		function browseInvitationDialog(event) {
+			var cardId = event.data.cardId;
+			renderSelectShareForm(cardId);
+			$("#select-share-dlg").dialog({
+				title: "文件分享",
+				model: true,
+				draggable: true,
+				width: 388,
+				height: 232,
+				buttons: [{
+					text: "关闭",
+					handler: function () {
+						$("#select-share-dlg").dialog("close");
+					}
+				}]
+			});
+			$("#select-share-dlg .dlg-content").css("margin", "0px");
+			$("#select-share-dlg .dlg-content").css("border", "none");
+			$("#select-share-dlg .dlg-title").css("display", "none");
+			$("#select-share-dlg .dialog-button-wrap").css("float", "right").css("width", "100px");
+			return false;
+		}
+		/**
+		 * 收藏知识/取消收藏知识
+		 *
+		 * @param event
+		 * @returns
+		 */
+		function collectCard(event) {
+			var cardId = event.data.cardId;
+			awsui.ajax.request({
+				url: "./jd",
+				method: "POST",
+				alert: false,
+				//loading: true,
+				data: {
+					sid: sid,
+					cmd: "com.actionsoft.apps.kms_knwl_center_collect_card",
+					cardId: cardId
+				},
+				success: function (responseObject) {
+					if (responseObject.result === 'ok') { // 收藏成功
+						$('#' + tabId + ' span[name=collectCard] span.collectionword').text('取消收藏');
+						$('#' + tabId + ' span[name=collectCard]').width('82px');
+					} else if (responseObject.result === 'warning') { // 取消收藏成功
+						$('#' + tabId + ' span[name=collectCard] span.collectionword').text('收藏');
+						$('#' + tabId + ' span[name=collectCard]').width('56px');
+					}
+					$.simpleAlert(responseObject.msg, "ok");
+				}
+			});
+		}
+		/**
+		 * 打开反馈知识对话框
+		 *
+		 * @param event
+		 * @returns
+		 */
+		function reportCardDialog(event) {
+			$('#reportTextarea').val(''); // 清空内容
+			reportCardId = event.data.cardId;
+			reportDimensionId = event.data.dimensionId;
+			$('#reportCardPopbox').popbox({
+				target: event.target,
+				height: 178,
+				width: 250
+			});
+		}
+
+		/**
+		 * 反馈知识
+		 *
+		 * @param event
+		 * @returns
+		 */
+		function reportCard() {
+			var reportTextareaVal = $('#reportTextarea').val();
+			if ($.trim(reportTextareaVal) == '') {
+				$.simpleAlert("反馈内容不允许为空", "info");
+				return false;
+			}
+			if (reportTextareaVal.length > 1000) {
+				$.simpleAlert('反馈内容长度不能超过1000个字符', 'info');
+				return false;
+			}
+			awsui.ajax.request({
+				url: "./jd",
+				method: "POST",
+				alert: false,
+				//loading: true,
+				data: {
+					sid: sid,
+					cmd: "com.actionsoft.apps.kms_knwl_center_report_card",
+					cardId: reportCardId,
+					dimensionId: "",
+					reportContent: encodeURIComponent(reportTextareaVal)
+				},
+				success: function (responseObject) {
+					if (responseObject.result === 'ok') {
+						$.simpleAlert("谢谢您的反馈", "ok");
+						$('#reportCardPopbox').popbox("close");
+					} else {
+						$.simpleAlert(responseObject.msg, responseObject.result);
+					}
+				}
+			});
+		}
+
+	});
+
+
+</script>
+</head>
+<body>
+	<div id="wrapper" style="width:100%; margin: 0 auto;background-color:#f8f8f8">
+		<div name="head" style="width: 100%; margin:10px 0px;background-color:#ffffff">
+			<div style="margin:0px 20px;height:30px;line-height:30px;position:relative">
+				<div style=" display:inline-block">
+					<img name="cardCreateUserPhoto" alt="知识作者" src="../commons/img/photo.png" class="radius5" style="width: 30px; height: 30px;">
+					<span name="cardCreateUsername" style="font-size: 14px;color: #666;display:inline-block;margin-left:15px;">管理员</span><span style="font-size: 12px;color: #666;display:inline-block;margin-left:10px;">|</span><span name="cardCreateDept" style="font-size: 12px;color: #666;display:inline-block;margin-left:10px;">部门1</span>
+				</div>
+				<div class="rating_sum"style=" display:inline-block;color: #0000EE;position:absolute;right:0px;" >
+					<span name="rateUserCounts">0</span>人评分
+				</div>
+			</div>
+			<div name="ratingWrap" style="margin:0px 20px;">
+				<div class="rating_wrap" style="margin: 10px 0;width: 100%;background-color:#f8f8f8">
+					<div class="rating_self" style="width:80px;display: inline-block;">
+						<div style=" width:100%;"><strong name="avgScore" class="rating_num" style="margin-right: 2px;">4.0</strong></div>
+						<div name="avgRate" title="" style="width: 80px;">
+						</div>
+					</div>
+					<div name="percentDiv" style="display: inline-block;">
+						<span class="stars5 starstop"> 5星 </span>
+						<div name="fiveStarBar" class="power" style="width: 0px;"></div>
+						<span name="fiveStar" class="rating_per">0.0%</span> <br> <span class="stars4 starstop"> 4星 </span>
+						<div name="fourStarBar" class="power" style="width: 150px;"></div>
+						<span name="fourStar" class="rating_per">100.0%</span> <br> <span class="stars3 starstop"> 3星 </span>
+						<div name="threeStarBar" class="power" style="width: 0px;"></div>
+						<span name="threeStar" class="rating_per">0.0%</span> <br> <span class="stars2 starstop"> 2星 </span>
+						<div name="twoStarBar" class="power" style="width: 0px;"></div>
+						<span name="twoStar" class="rating_per">0.0%</span> <br> <span class="stars1 starstop"> 1星 </span>
+						<div name="oneStarBar" class="power" style="width: 0px;"></div>
+						<span name="oneStar" class="rating_per">0.0%</span> <br>
+					</div>
+				</div>
+				<div name="doRateWrap" style="height:25px; width: 190px;">
+					<div style="float: left; font-size: 14px; color: #666;">您的评分：</div>
+					<div style="float: left; cursor: pointer; width: 100px;" name="rateDiv">
+					</div>
+				</div>
+			</div>
+			<div style="margin:0px 20px;" id='cardContext-readOnly' name='cardEditInfo' style='display:none;border-top:1px solid #d5d5d5;padding-top:10px;margin:10px 0;height:100px;white-space: normal;width:100%;overflow:auto' ></div>
+		</div>
+		<div class="filecontent" style="background-color:#ffffff;">
+			<!--<div name="toolbar" style="height: 26px; padding: 5px 20px; border-bottom: 1px solid #E7E7E7;">
+				&lt;!&ndash;<button name="packageFiles" class="button blue">打包下载</button>&ndash;&gt;
+			</div>-->
+			<div name="fileAndCommentDiv" style="overflow: hidden auto; ">
+				<div style="margin:0px 20px;">
+					<table style="width: 100%; height: 100%; border-top: 0;" class="table table-thin no-padding">
+						<tbody>
+						<tr>
+							<td colspan="7" style="padding: 0; border: 0;">
+								<div name="attachDiv" style="overflow-x: hidden; overflow-y: auto;">
+									<table name="attachTable" style="width: 100%; border-top: 0;" class="table table-thin">
+										<tbody>
+										<tr id="attachColTR">
+											<td  style=" height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+											<td  style="width: 120px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+										</tr>
+
+										</tbody>
+									</table>
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

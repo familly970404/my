@@ -1,0 +1,103 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+/*维度 .tree-items是tree插件上的固定class,使用它保证自定义的background优先级高于默认但是低于important*/
+.treeDimension {
+    background: url("../img/kms_icon.png") no-repeat -206px -63px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.tree-items > .treeHotspot {
+    background: url("../img/kms_icon.png") no-repeat -279px -63px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.tree-items > .treeRoot {
+    background: url("../img/kms_icon.png") no-repeat -640px -209px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.tree-items > .treeNoPerm {
+    cursor: default !important;
+}
+
+.treeDimension-noPerm {
+    background: url("../img/kms_icon.png") no-repeat -209px -216px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.treeHotspot-noPerm {
+    background: url("../img/kms_icon.png") no-repeat -282px -216px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.treeLoading {
+    width: 30px !important;
+    background: url(../../../commons/img/loading.gif) no-repeat !important;
+}
+
+/*重写aws tree的css(public.css)*/
+.ui-tree {
+    font-size: 14px;
+}
+
+.ui-tree .tree-items {
+    height: 30px;
+    line-height: 30px;
+    color: #333;
+}
+
+.ui-tree .tree-items.current {
+    background: #f3f8fe;
+}
+
+.ui-tree .tree-items.current:BEFORE {
+    content: '';
+    position: absolute;
+    border-color: #A7A7A7;
+    border-style: solid;
+    border-width: 0 2px 0 2px;
+    height: 30px;
+}
+
+.ui-tree .root-open.none {
+    background: url('../img/kms_icon.png') no-repeat -425px -68px;
+    vertical-align: bottom;
+    margin-left: 6px;
+    padding-left: 2px;
+}
+
+.ui-tree .root-close.none {
+    background: url('../img/kms_icon.png') no-repeat -507px -261px;
+    vertical-align: bottom;
+    margin-left: 8px;
+    margin-bottom: 2px;
+}
+
+.ui-tree .tree-indent {
+    margin-left: 8px;
+}
+
+.ui-tree .line-items.none {
+    margin-left: 8px;
+}

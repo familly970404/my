@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title></title>
+		<!-- JQuery -->
+		<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+		
+		<!-- AWS UI -->
+		<link rel="stylesheet" type="text/css" href="../commons/css/awsui.css"/>
+		<script type="text/javascript" src="../commons/js/awsui.js"></script>
+		<script type="text/javascript" src="../commons/js/public.js"></script>
+	    <script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.xpages.js"></script>
+
+		
+	    <!--jscolor-->
+		<style type="text/css">
+		/**
+		 * 	对齐方式
+		 */
+		.leftalign{
+			text-align: left;
+		}
+		.rightalign{
+			text-align: right;
+		}
+		.middlealign{
+			text-align: center;
+		}
+		
+		.floatleft{
+			float:left;
+		}
+		
+		
+		.fw50{width:55px;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.fw60{margin-left:10px;width:50px;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.fw30{width:30px;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis;position:absolute;top:0;left:0}
+		.fw260{width:260px;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis;position:absolute;top:0;left:70px}
+		.fw100{width:100px;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.fw150{width:150px;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.fw225{width:225px;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.autow{position:absolute;top:0;left:325px;right:150px;width:auto;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.autowheader{position:absolute;top:-2px;left:50px;right:150px;width:600px}
+		.w5{width:4.5%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w10{width:10%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w15{width:15%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w20{width:20%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w25{width:25%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w30{width:30%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w40{width:40%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w45{width:45%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w50{width:50%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w60{width:60%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w70{width:69%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w80{width:80%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w90{width:90%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w95{width:95%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		.w100{width:100%;white-space:nowrap;word-break:keep-all;overflow:hidden;text-overflow:ellipsis}
+		
+		
+				 
+		.kmsmsg-list-header{border-bottom:1px solid #e6e6e6;overflow:hidden;width:100%;height:40px;line-height:40px;text-align:center;}
+		.kmsmsg-list-header li{height:40px;display:inline-block;background:#f8f8f8;font-weight:700;cursor:default}
+		.kmsmsg-list{display:block;overflow:auto;position:relative;margin:0px 10px;}
+		.kmsmsg-list-row{border-bottom:1px solid #e6e6e6;overflow:hidden;width:100%;height:60px;line-height:28px;text-align:center}
+		.kmsmsg-list-row li{height:60px;display:inline-block;cursor:default}
+		.cardname{
+			    color: #DE523B;
+			    font-size: 14px;
+			    display: inline-block;
+			    width: 100%;
+			    float: left;
+			    height: 20px;
+			    line-height: 20px;
+			    padding-top: 9px;
+			    cursor:pointer;
+		}
+		.cardpath{
+			color: #727272;
+		    font-size: 12px;
+		    display: inline-block;
+		    width: 100%;
+		    float: left;
+		    height: 24px;
+		    line-height: 24px;
+		}
+		.cardright{
+		    padding-right: 10px;
+		    font-size: 12px;
+		    color: #AEAEAE;
+		    height: 44px;
+		    line-height: 22px;
+		    padding-top: 7px;
+		}
+		</style>
+		<script type="text/javascript">
+			var sid = "<#sid>";
+			var sid = "<#sid>";
+			var kmsDataList=[<#kmsDataList>];
+		</script>
+	</head>
+	<body>
+	   <div style="width:100%;height:100%;">
+		        <div class="kmsmsg-list">
+						<ul class="kmsmsg-list-row" rowid="d4f58ab8-ae37-4bd9-85f4-04a42467cfc8">
+							<li class="w70 leftalign" awsui-qtip=" 主模板">
+								<div style="padding-left:10px;">
+									主模板
+								</div>
+							</li>
+							<li class="w30 middlealign">
+								2018-06-21 09:40:25
+							</li>
+						</ul>	 
+				</div>
+	   </div>
+	</body>
+</html>

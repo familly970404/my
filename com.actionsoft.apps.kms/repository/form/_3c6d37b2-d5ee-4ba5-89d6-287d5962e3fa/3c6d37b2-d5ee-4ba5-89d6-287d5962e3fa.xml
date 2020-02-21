@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formModel>
+    <id>3c6d37b2-d5ee-4ba5-89d6-287d5962e3fa</id>
+    <createUser>admin</createUser>
+    <createTime>2019-05-18 15:37:08</createTime>
+    <updateUser></updateUser>
+    <updateTime>2019-07-25 10:58:51</updateTime>
+    <signature>tGOmxiTgjT/77UoYpSlq8Vc+hHPRoJWHdZexXc7zEpYuMNdhvSICeJnlc/RzRHGrYgPvWnGsCMTHw0Tn3KbAXZIo42E8mM3Wiu55gxmfkcYRvf26hdnYKH17AEKD9ZZ+</signature>
+    <managed>false</managed>
+    <title>借阅维护</title>
+    <deleted>false</deleted>
+    <categoryName>借阅</categoryName>
+    <administrator>admin</administrator>
+    <defaultLanguage></defaultLanguage>
+    <url></url>
+    <urlHeight></urlHeight>
+    <formItems>
+        <formItem>
+            <id>b118d32e-4803-4bb9-a090-7fcc84f7c196</id>
+            <title>借阅维护</title>
+            <templateFile>{"tablet":"借阅维护.htm","pc":"借阅-借阅维护.htm","mobile":"借阅维护_m.htm"}</templateFile>
+            <grid>false</grid>
+            <gridSetting></gridSetting>
+            <orderBy></orderBy>
+            <pageLimit>0</pageLimit>
+            <boModelId>891ecb88-d681-44eb-81f1-9ef15dd3df37</boModelId>
+            <dictionaryFileName></dictionaryFileName>
+            <hiddenHead>false</hiddenHead>
+            <theme>{"pc":"_bpm.platform"}</theme>
+            <itemDisplays/>
+            <scheme>{"pc":"scheme_1.css"}</scheme>
+            <calcFormula></calcFormula>
+            <conditionControl></conditionControl>
+            <validate></validate>
+            <icon></icon>
+            <gridControl></gridControl>
+            <summaryControl></summaryControl>
+            <ruleControl></ruleControl>
+            <hiddenFields>BM,JYY</hiddenFields>
+            <hiddenAddBtn>false</hiddenAddBtn>
+        </formItem>
+    </formItems>
+</formModel>

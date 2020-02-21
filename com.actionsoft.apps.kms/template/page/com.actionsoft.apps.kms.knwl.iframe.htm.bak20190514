@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>知识中心</title>
+<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+<link rel="stylesheet" href="../commons/css/awsui.css" />
+<script type="text/javascript" src="../commons/js/awsui.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.browsecard.js"></script>
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.browsecard.css" />
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.knwl.iframe.css" />
+<!--Grid-->
+<script src="../commons/js/jquery/scripts/ui/reference/jquery-ui.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid-localize-zh.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.knwl.iframe.js"></script>
+	<!--HTML EDITOR-->
+	<link type='text/css' rel='stylesheet' href='../commons/plug-in/ueditor/themes/default/css/ueditor.css' />
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.config.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.all.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/lang/zh-cn/zh-cn.js'></script>
+	<script type='text/javascript' src='../commons/js/jquery/scripts/ui/aws.ueditor.config.js'></script>
+	<script type='text/javascript' src='../commons/plug-in/ueditor/ueditor.parse.js'></script>
+	<script type='text/javascript' src='../commons/js/jquery/scripts/jquery.md5.js'></script>
+<script type="text/javascript">
+	var sid = '<#sid>';
+	var page = '<#page>';
+	var canPreviewType = "<#canPreviewType>";
+	var mePhoto = "<#mePhoto>";
+	var isFavoriteAppActive = <#isFavoriteAppActive>;
+	var isOnlinedocAppActive = <#isOnlinedocAppActive>;
+	var isNetworkAppActive = <#isNetworkAppActive>;
+	var hasKnwlCenterNavPerm = <#hasKnwlCenterNavPerm>;
+	var hasKnwlSearchPerm = <#hasKnwlSearchPerm>;
+	var gridRowPP = <#gridRowPP>;
+	var maxFileSize = <#maxFileSize>;
+	var blackFileList = "<#blackFileList>";
+	var today = '<#today>';
+	var browserPreview = '<#browserPreview>';
+	var label1 = "<#label1>";
+	var label2 = "<#label2>";
+	var label3 = "<#label3>";
+	var hasOnlineLevel = "<#hasOnlineLevel>";
+</script>
+</head>
+
+<body>
+	<div class="top-wrap">
+		<div class="top-item" indx="search" style="margin-left: 26px;">
+			<span class="top-item-word">知识门户</span> <span class="top-item-line"></span>
+		</div>
+		<div class="top-item" indx="center">
+			<span class="top-item-word">知识中心</span> <span class="top-item-line"></span>
+		</div>
+	</div>
+	<div class="content-wrap">
+		<div class="content-item" indx="center">
+			<iframe indx="center" class="content-item-iframe" frameBorder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+		</div>
+		<div class="content-item" indx="search">
+			<iframe indx="search" class="content-item-iframe" frameBorder="0"></iframe>
+		</div>
+	</div>
+	<div id="browseCardDialog"></div>
+</body>
+<input type="hidden" id="appId" value="<#appId>" />
+</html>

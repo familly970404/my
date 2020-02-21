@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="../commons/css/awsui.css" />
+<script type="text/javascript" src="../commons/js/public.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/jquery.js"></script>
+<script type="text/javascript" src="../commons/js/jquery/scripts/ui/datepicker/aws.datepicker-zh-CN.js"></script>
+
+<script type="text/javascript" src="../commons/js/awsui.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.knwl_search_tophome.js"></script>
+<script type="text/javascript" src="../apps/com.actionsoft.apps.kms/js/com.actionsoft.apps.kms.common.opt.js"></script>
+<link rel="stylesheet" href="../apps/com.actionsoft.apps.kms/css/com.actionsoft.apps.kms.knwl_search.css" />
+
+<!--Grid-->
+<script src="../commons/js/jquery/scripts/ui/reference/jquery-ui.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid.js"></script>
+<script src="../commons/js/jquery/scripts/ui/aws.grid-localize-zh.js"></script>
+<!-- 分页 -->
+<script src="../commons/js/jquery/scripts/ui/awsui.pagination.js"></script>
+
+
+<script type="text/javascript">
+	var isFullsearchAppActive = <#isFullsearchAppActive>;
+	var sid = "<#sid>";
+	var extendsLinks = <#extendsLinks>;
+</script>
+<style type="text/css">
+
+table.aws-grid-header-table div.aws-grid-header-table-div{
+		line-height:24px !important;
+}
+
+.aws-grid-header td.pq-col-sort-asc, .aws-grid-header td.pq-col-sort-desc{
+	background: #fefefe;
+	color: #6c98d1;
+}
+
+#datepicker .ui-state-active {
+	background: rgb(0, 119, 204) !important;
+}
+
+#datepicker .state-active {
+	border: 1px solid #AAAAAA !important;
+	font-weight: normal !important;
+	color: #FFFFFF !important;
+	background: #0077CC !important;
+}
+.select2-container .select2-selection--single{
+	height:38px;
+	line-height: 38px;
+}
+.select2-container{
+	font-size:14px;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+	line-height: 38px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	height: 38px;
+}
+</style>
+</head>
+<body style="overflow-x:hidden">
+	<div class="head-wrap">
+		<img alt="" src="../apps/com.actionsoft.apps.kms/img/knwl-lib-logo.png" style="display:inline-block;position:relative;margin-right:10px"><select id="searchType" style="border-radius:0px;width:85px;height:38px;font-size:14px;background-color:#ffffff;"><option checked value="1">全文</option><option value="2">标题简介</option></select><input id="searchText" type="text" class="txt" placeholder="请输入文件内容关键词..." />
+		<button type="button" id="fullSearchBtn" class="button green" onclick="fullsearch.search()">搜索</button>
+	</div>
+	<div class="doc-type-wrap">
+		<input class="awsui-checkbox" id="doc-type-pdf" value="pdf" type="checkbox"> <label class="awsui-checkbox-label" for="doc-type-pdf">PDF</label> <input class="awsui-checkbox" id="doc-type-doc" value="doc" type="checkbox"> <label class="awsui-checkbox-label" for="doc-type-doc">DOC</label> <input class="awsui-checkbox" id="doc-type-ppt" value="ppt" type="checkbox"> <label
+			class="awsui-checkbox-label" for="doc-type-ppt">PPT</label> <input class="awsui-checkbox" id="doc-type-xls" value="xls" type="checkbox"> <label class="awsui-checkbox-label" for="doc-type-xls">XLS</label> <input class="awsui-checkbox" id="doc-type-txt" value="txt" type="checkbox"> <label class="awsui-checkbox-label" for="doc-type-txt">TXT</label>
+	</div>
+	<div class="dimension-meta-bar noselect">
+	</div>
+	<div class="filter-bar noselect" style="display:none">
+		<a id = "backToTopBtn" href="#" onclick="fullsearch.backToTopList()" style="position:absolute;right:20px;height:40px;width:80px;font-size:13px">返回TOP排行</a>
+	</div>
+	<div id="fullsearch-result" style="display: none;">
+		<div style="width: 100%; top: 204px;position: absolute; bottom: 60px;">
+			<div style="height: 100%; position: absolute; border: 1px solid #e0e0e0; left: 20px; right: 20px; box-sizing: border-box; border-radius: 5px; overflow: auto">
+				<ol id="fullsearchListOl">
+				</ol>
+			</div>
+		</div>
+		<div style="height: 60px; width: 100%; position: absolute; bottom: 0; text-align: center; display: table;">
+            <div id="pagination" style="vertical-align: middle; display: table-cell; padding-left: 2px; overflow: hidden;">
+                <img src="../apps/com.actionsoft.apps.kms/img/loading.gif" style="display: none;"/>
+                <span style="cursor:pointer;position: relative;top: 2px;" style="display:none;">正在请求全文检索...</span>
+				<button type="button" class="button blue" onclick="fullsearch.doSearch(false)" style="display: none;">加载更多</button>
+            </div>
+		</div>
+	</div>
+	<iframe id="attrsearchGrid" width="100%" height="1150px" src = "./w?sid=<#sid>&cmd=com.actionsoft.apps.addons.xpages_home&id=8023cc87-4e0c-4435-8428-fb5ad2356587"></iframe>
+	<div id="attrsearchGrid-btn">
+	<div class="more-button" style="display:none;height:30px;text-align:center;line-height:30px;cursor:pointer;" onclick="attrsearch.loadNextPage();">加载更多</div>
+	<div class="search-end" style="display:none;height:30px;text-align:center;line-height:30px;color:#cccccc" >数据加载完毕</div>
+	</div>
+	<div id="fullscreenWrap" style="filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000,endColorstr=#E5000000);position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; z-index: 600;">
+		<!-- <div id="fullscreenpanel" class="fullscreenpanel"></div> -->
+		<div id='fstoolbar' class="fstoolbar">
+			<div class='toolbar-photo'>
+				<img src="" class="awsui-user-profile">
+			</div>
+			<div class='toolbar-title'></div>
+			<div id="fsclosebtn" class="fsclosebtn" title="关闭"></div>
+			<div id="fsdownloadbtn" class="fsdownloadbtn" onclick="downloadFile(this)" title="下载文件"></div>
+		</div>
+		<div id="previewpanel" class="previewpanel"></div>
+	</div>
+	<form id="borrowProcessForm" name="borrowProcessForm" action="./w" method="post" target="borrowProcessFrame">
+		<input id="sid" name="sid" type="hidden" value="<#sid>" /> <input id="cmd" name="cmd" type="hidden" value="com.actionsoft.apps.kms_knwl_center_borrow_card_process_start"> <input id="cardId" name="cardId" type="hidden" /> <input id="dimensionId" name="dimensionId" type="hidden" />
+	</form>
+	<div id='borrowProcessDialog' style="display: none;">
+		<iframe id="borrowProcessFrame" name="borrowProcessFrame" frameBorder="0" style="width: 100%; height: 100%; border: 0;"></iframe>
+	</div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!-- 左侧树和分隔栏 -->
+<div id="all-left" class="all-left">
+	<ul id="dimensionTree"></ul>
+</div>
+<div id="all-separater" style="width: 0px; height: 100%; float: left; cursor: col-resize; padding-left: 3px; padding-right: 4px; position: relative; left: -3px; z-index: 2;">
+	<div style="width: 0; height: 100%; border-left: 1px solid #C6C8CC;"></div>
+</div>
+<!-- toolbar的过滤区 -->
+<button id="filterAllBtn" type="button" class="button white" style="margin-left: 5px; float: right;">过滤</button>
+<input id="filterAllInput" type="text" placeholder="请输入知识名称或文件名称" class="txt" style="float: right; padding: 4px; width: 200px;">
+
+<!-- 右侧gird和hotspot区域 -->
+<div id="dimension-card-grid" style="border-left: 0;"></div>
+<div id="hotspotDiv" style="width: 100%; height: 100%; display: none;overflow: hidden;">
+	<iframe id="hotspotFrame" name="hotspotFrame" frameBorder="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="width: 100%; height: 100%; border: 0;"></iframe>
+</div>
+
+
+
+<div id='knwlDocDialog' style="display: none;z-index:2">
+	<table class="awsui-ux" style="padding: 0px 10px;">
+		<tbody>
+			<tr>
+				<td>
+					<table class="awsui-ux" style="padding: 0px 0px;">
+						<colgroup>
+							<col class="awsui-ux-title" style="width: 10%;">
+							<col style="width: 30%;">
+							<col class="awsui-ux-title" style="width: 60%;">
+						</colgroup>
+						<tbody>
+						<tr height="35px" >
+							<td >标题</td>
+							<td><span class="required"> <input id="cardName" name="cardName" type="text" class="txt" style="width: 264px;" />
+										</span></td>
+							<td  rowspan="6">
+								<div id='cardEditTd'><script type='text/plain' id='cardEditInfo' name='cardEditInfo' style='height:170px;white-space: normal;width:100%' ></script></div>
+								<div id="cardEditNoContent" style="text-align:center;height:275px;display:none;cursor:pointer;background:url(../apps/com.actionsoft.apps.kms/img/no_content.png) no-repeat top;background-size:40% 80%;"   onclick="showEditor()">
+
+									<span style="display:inline-block;position:relative;top:230px;color:#C0C2C4">暂无正文，点击此处编辑，或左下角上传文件</span>
+								</div>
+							</td>
+								</tr>
+								<tr height="35px" >
+									<td >有效期</td>
+									<td><input id="validDate" name="validDate" type="text" class="txt" placeholder="默认长期有效" title="默认长期有效" style="width: 162px;" /></td>
+									</tr>
+									<tr height="35px" style="display:<#hasOnlineLevel>">
+									<td >格式转换</td>
+									<td>
+<!--
+										<input class="awsui-radio" name="radioxOL" checked="checked" id="rdoOL1" value="1" type="radio"> <label class="awsui-radio-label" for="rdoOL1">在线阅读和下载</label> <input class="awsui-radio" name="radioxOL" id="rdoOL0" value="0" type="radio"> <label class="awsui-radio-label" for="rdoOL0">在线阅读</label>
+-->
+										<select id="rdoOL"></select>
+									</td>
+								</tr>
+
+									<tr height="35px">
+									<td >保密级别</td>
+									<td><input class="awsui-radio" checked="checked" name="radioxSL" id="rdoSL0" value="0" type="radio"> <label class="awsui-radio-label" for="rdoSL0"><#label1></label> <input class="awsui-radio" name="radioxSL" id="rdoSL1" value="1" type="radio"> <label class="awsui-radio-label" for="rdoSL1"><#label2></label> <input class="awsui-radio" name="radioxSL" id="rdoSL2" value="2" type="radio"> <label class="awsui-radio-label" for="rdoSL2"><#label3></label></td>
+								</tr>
+						<tr height="35px">
+							<td >互动选项</td>
+							<td><input id="isCommentSB" type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;<input id="isRateSB" type="checkbox"></td>
+						</tr>
+									<!--<tr>
+									<td class="awsui-ux-title">知识内容</td>
+									<td colspan = '3'><textarea class="txt awsui-textarea" placeholder="" id="cardContext" name="cardContext" title="" style="height: 80px; width: 530px;"></textarea></td>
+								</tr>-->
+								</tbody>
+								</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fieldset style="margin: 0;">
+						<legend style="margin: 0;"> 文件 </legend>
+						<table style="width: 100%; border-top: 0;" class="table table-thin no-padding">
+							<tbody>
+								<tr>
+									<td style="width: 45px; border: 0; text-align: center;">序号</td>
+									<td style="width: 300px; border: 0;">名称</td>
+									<td style="width: 15px; border: 0; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									<td style="width: 50px; border: 0;">版本</td>
+									<td style="width: 100px; border: 0;">上传人</td>
+									<td style="width: 80px; border: 0;">大小</td>
+									<td style="width: 130px; border: 0; text-align: center;">日期</td>
+									<td style="width: 40px; border: 0;">删除</td>
+								</tr>
+								<tr>
+									<td colspan="8" style="padding: 0; border: 0;">
+										<div id="fileDiv" style="overflow-x: hidden; overflow-y: auto; height: 100px; border: 1px solid #e5e5e5;">
+											<table id="fileTable" style="width: 100%; border-top: 0;" class="table table-thin">
+												<tr id='colTR'>
+													<td align="center" style="width: 45px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													<td align="left" style="width: 300px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													<td align="center" style="width: 15px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													<td align="center" style="width: 50px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													<td align="center" style="width: 100px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													<td align="center" style="width: 80px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													<td align="center" style="width: 130px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													<td align="center" style="width: 40px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+												</tr>
+											</table>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="8" style="text-align: right; border: 0;">
+										<div id="uploadDoc" class="upbtn-wrapper" style="display: inline-block; float: left;">
+											<div class="upbtn-icon"></div>
+											<div class="upbtn-inner">
+												<span class="upbtn-span">上传文件</span>
+											</div>
+										</div>
+										<button id="knwlDocOkBtn" class="button blue">保存</button>
+										<button id="knwlDocNoBtn" class="button" style="margin-right: 0;">关闭</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</fieldset>
+				</td>
+			</tr>
+		</tbody>
+									</table>
+</div>
+<div id='publishCardDialog' style="display: none;">
+	<div class="dlg-content" style="height: 360px;">
+		<div style="width: 300px; height: 100%; float: left; border-right: 1px solid #C6C8CC;">
+			<ul id="meDimensionTree"></ul>
+		</div>
+		<div id="publishCardSchemaDiv" style="width: 300px; height: 100%; float: left; border-right: 1px solid #C6C8CC; overflow-y: auto;"></div>
+		<div style="width: 260px; height: 100%; float: left; overflow-y: auto;">
+			<table class="awsui-ux" style="width: 100%; padding: 10px 15px 10px 5px">
+				<colgroup>
+					<col class="awsui-ux-title" style="width: 40px;">
+					<col>
+				</colgroup>
+				<tbody>
+					<tr>
+						<td>标签</td>
+						<td>
+							<div id="usersuper" class="awsui-superinput" style="width: 196px;">
+								<input id="userinput" placeholder="回车添加标签，最多10个" value="" type="text" inited="false">
+							</div>
+						</td>
+					</tr>
+					<tr style="display: none;">
+						<td>描述</td>
+						<td><textarea id="memo" style="height: 80px;" class="txt awsui-textarea"></textarea></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<form id="borrowProcessForm" name="borrowProcessForm" action="./w" method="post" target="borrowProcessFrame">
+	<input id="sid" name="sid" type="hidden" value="<#sid>" /> <input id="cmd" name="cmd" type="hidden" value="com.actionsoft.apps.kms_knwl_center_borrow_card_process_start"> <input id="cardId" name="cardId" type="hidden" /> <input id="dimensionId" name="dimensionId" type="hidden" />
+</form>
+<div id='borrowProcessDialog' style="display: none;">
+	<iframe id="borrowProcessFrame" name="borrowProcessFrame" frameBorder="0" style="width: 100%; height: 100%; border: 0;"></iframe>
+</div>
+<div id="fullscreenWrap" style="filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000,endColorstr=#E5000000);position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; z-index: 600;">
+	<!-- <div id="fullscreenpanel" class="fullscreenpanel"></div> -->
+	<div id='fstoolbar' class="fstoolbar">
+		<div class='toolbar-photo'>
+			<img src="" class="awsui-user-profile">
+		</div>
+		<div class='toolbar-title'></div>
+		<div id="fsclosebtn" class="fsclosebtn" title="关闭"></div>
+		<div id="fsdownloadbtn" class="fsdownloadbtn" onclick="downloadFile(this)" title="下载文件"></div>
+	</div>
+	<div id="previewpanel" class="previewpanel"></div>
+</div>
+

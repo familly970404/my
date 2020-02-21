@@ -1,0 +1,24 @@
+function () {
+    var boDefName = "<#boDefName>";
+    var boItemDefName = "<#boItemDefName>";
+    var uiId = "<#uiId>";
+    var uiSetting =<#uiSetting>;
+    return function () {
+        var isQuitDom = ui.$cell.children();
+        //不允许编辑返回原值
+        if (isQuitDom != null && isQuitDom.attr("name") == "quitEditModeFlag") {
+        return isQuitDom.val();
+        }
+        var $cell = ui.$cell;
+
+		var value = $cell.children().val();
+		var record = ui.rowData;
+
+		isRefreshGridPage=false;
+		if(value && value !== ''){
+            record[boItemDefName+'_DISPLAYVALUE'] = $.map($('#'+boDefName+boItemDefName+'Select2').select2('data'),function(n){return n.cardName || n.text}).join(',');
+		}
+        showValueJO[record.ID] = record[boItemDefName+'_DISPLAYVALUE'];
+        return value;
+    }(ui, boDefName, boItemDefName, uiId, uiSetting);
+}(ui);

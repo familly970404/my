@@ -1,0 +1,364 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+/*维度 .tree-items是tree插件上的固定class,使用它保证自定义的background优先级高于默认但是低于important*/
+.treeDimension {
+	background: url("../img/kms_icon.png") no-repeat -206px -63px !important;
+	width: 16px !important;
+	height: 16px !important;
+	vertical-align: middle !important;
+	margin-right: 10px !important;
+}
+
+.tree-items > .treeHotspot {
+	background: url("../img/kms_icon.png") no-repeat -279px -63px !important;
+	width: 16px !important;
+	height: 16px !important;
+	vertical-align: middle !important;
+	margin-right: 10px !important;
+}
+
+
+.tree-items > .treeRoot {
+	background: url("../img/kms_icon.png") no-repeat -640px -209px !important;
+	width: 16px !important;
+	height: 16px !important;
+	vertical-align: middle !important;
+	margin-right: 10px !important;
+}
+.tree-items > .treeNoPerm {
+	cursor: default !important;
+}
+
+.treeDimension-noPerm {
+	background: url("../img/kms_icon.png") no-repeat -209px -216px
+		!important;
+	width: 16px !important;
+	height: 16px !important;
+	vertical-align: middle !important;
+	margin-right: 10px !important;
+}
+.treeHotspot-noPerm {
+	background: url("../img/kms_icon.png") no-repeat -282px -216px
+		!important;
+	width: 16px !important;
+	height: 16px !important;
+	vertical-align: middle !important;
+	margin-right: 10px !important;
+}
+.treeLoading {
+	width: 30px !important;
+	background: url(../../../commons/img/loading.gif) no-repeat !important;
+}
+
+.dimension-left {
+	width: 350px;
+	height: 100%;
+	float: left;
+	left: 0px;
+}
+
+.dimension-right {
+	margin-left: 357px;
+	height: 100%;
+	position: relative;
+}
+
+.nameAnchor:HOVER {
+	background-color: #e0e4e7;
+	cursor: pointer;
+	height: 20px;
+}
+
+.nameAnchor1:HOVER {
+	background-color: #e0e4e7;
+	cursor: pointer;
+	height: 20px;
+	/* 	height: 20px; 元数据的名称不需要手动指定高度,原因未知,如果维度不指定高度的话和默认td高度不一致(17px)*/
+}
+/*操作按钮*/
+.opt_icon {
+	display: inline-block;
+	vertical-align: middle;
+	width: 26px;
+	height: 14px;
+	margin: -3px 1px 0 0;
+	background: url('../img/kms_icon.png') 0px 0px no-repeat;
+	cursor: pointer;
+}
+
+.opt_icon.edit {
+	background-position: -424px -110px;
+}
+
+.opt_icon.borrow {
+	background-position: -502px -108px;
+}
+
+.opt_icon.log {
+	background-position: -208px -163px;
+}
+.opt_icon.bindhotspot {
+	background-position: -419px -216px;
+}
+.opt_icon.ac {
+	background-position: -577px -213px;
+}
+
+.opt_icon.acToDes {
+    background: url("../img/acToDes.png") no-repeat -1px -1px;
+    background-size: 16px !important;
+}
+
+.opt_icon.report {
+    background: url('../img/report.png') no-repeat;
+}
+.opt_icon.cancelpublish {
+	background-position: -349px -160px;
+}
+/*重写aws tab的css*/
+.awsui-tabs {
+	background-color: #F8F9FB;
+}
+
+.awsui-tabs-container.top {
+	border-bottom: 0;
+}
+
+.awsui-tabs-items.top {
+	margin: 0;
+	border-radius: 0;
+}
+
+.awsui-tabs-items {
+	padding: 0;
+	width: 90px;
+	height: 27px !important;
+	line-height: 27px !important;
+	border: 1px solid #DCDCDC !important;
+	margin-top: 10px !important;
+}
+
+.awsui-tabs-items.current {
+	background-color: #8a8a8a;
+	color: #f4f8fb;
+}
+
+.awsui-tabs-container {
+	padding-left: 14px;
+}
+
+.nav-tab-right-border {
+	border-right: 0 !important;
+}
+
+.nav-tab-left-border {
+	border-left: 0 !important;
+}
+
+.awsui-tabs-items .tab-icon {
+	background-image: url("../img/kms_icon.png");
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 6px;
+	margin-left: 20px;
+}
+
+.awsui-tabs-items .tab-icon.tab-icon-dimension {
+	background-position: -347px -259px;
+}
+
+.awsui-tabs-items.current .tab-icon.tab-icon-dimension {
+	background-position: -397px -259px;
+}
+
+.awsui-tabs-items .tab-icon.tab-icon-meta {
+	background-position: -71px -260px;
+}
+
+.awsui-tabs-items.current .tab-icon.tab-icon-meta {
+	background-position: -129px -260px;
+}
+
+.awsui-tabs-items .tab-icon.tab-icon-validdate {
+	background-position: -796px -208px;
+}
+
+.awsui-tabs-items.current .tab-icon.tab-icon-validdate {
+	background-position: -832px -207px;
+}
+/*重写aws tree的css(public.css)*/
+.ui-tree {
+	font-size: 14px;
+}
+
+.ui-tree .tree-items {
+	height: 30px;
+	line-height: 30px;
+	color:#333;
+}
+
+.ui-tree .tree-items.current {
+	background: #f3f8fe;
+}
+
+.ui-tree .tree-items.current:BEFORE {
+	content: '';
+	position: absolute;
+	border-color: #A7A7A7;
+	border-style: solid;
+	border-width: 0 2px 0 2px;
+	height: 30px;
+}
+
+.ui-tree .root-open.none {
+    background: url('../img/kms_icon.png') no-repeat -425px -68px;
+	vertical-align: bottom;
+    margin-left: 6px;
+    padding-left: 2px;
+}
+
+.ui-tree .root-close.none {
+    background: url('../img/kms_icon.png') no-repeat -507px -261px;
+	vertical-align: bottom;
+	margin-left: 8px;
+    margin-bottom: 2px;
+}
+
+.ui-tree .tree-indent {
+	margin-left: 8px;
+}
+
+.ui-tree .line-items.none {
+	margin-left: 8px;
+}
+/*重写aws toolbar*/
+.awsui-toolbar {
+	border-bottom: 0;
+	box-shadow: none;
+}
+/*重写aws grid*/
+div.aws-grid {
+	box-shadow: none;
+}
+div.aws-grid-header-table-div {
+	height: 24px;
+	line-height: 24px !important;
+}
+
+td div.pq-td-div {
+	height: 25px;
+	line-height: 25px !important;
+}
+
+td.checkboxColumn input[type=checkbox] {
+	margin-top: 10px;
+}
+
+.aws-grid-header td.pq-col-sort-asc, .aws-grid-header td.pq-col-sort-desc
+	{
+	background-position-y: -30px;
+}
+.aws-grid-header td.pq-col-sort-asc, .aws-grid-header td.pq-col-sort-desc {
+	background: none;
+}
+.pq-header-outer {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+div.kms-no-record {
+    color: #AAAAAA;
+    text-align: center;
+    font-size: 14px  !important;
+    width: 100%;
+    height: 120px;
+    line-height: 120px  !important;
+    background: url(../img/no-record-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    cursor: default;
+}
+div.kms-no-km {
+	position: relative;
+    top: 40px;
+	color: #AAAAAA;
+	text-align: center;
+	font-size: 14px !important;
+	width: 100%;
+	height: 120px;
+	line-height: 114px !important;
+	background: url(../img/not-find-km.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-khtml-user-select: none;
+	cursor: default;
+}
+div.kms-no-km .title{
+	font-size:16px;
+	line-height: 30px !important;
+}
+div.kms-no-km .content{
+	font-size:13px;
+}
+.kms_hint{
+	background-image: url(../img/kms_icon.png);
+    height: 13px;
+    line-height: 13px;
+    float: left;
+    margin-top: 6px;
+    padding-left: 16px;
+    background-position: -348px -216px;
+    position: relative;
+    top: -3px;
+}
+/*已过期的浅红色背景*/
+tr.overdue td {
+	background-color: #ffb2b2;
+}
+iframe[hidefocus=hidefocus]{
+	width:200px;
+}
+.button.left{
+	float:left;
+} 
+.none{
+	display:none;
+}
+/*右上角刷新按钮*/
+.reload-page-wrap {
+	width: 30px;
+	height: 30px;
+	border: 0;
+	-webkit-border-radius: 39px;
+	border-radius: 39px;
+	background-color: #FFFFF;
+	cursor: pointer;
+	position: fixed;
+	top: 10px;
+	right: 10px;
+}
+
+.reload-page-wrap .reload-page {
+	height: 30px;
+	width: 30px;
+	background: url('../img/reload-page-white.png') 0px 0px no-repeat;
+}
+
+.reload-page-wrap:HOVER .reload-page {
+	background: url('../img/reload-page-gray.png') 0px 0px no-repeat;
+}

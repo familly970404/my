@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formModel>
+    <id>acfe4299-4d5b-4004-981e-74be1df0e6ff</id>
+    <createUser>admin</createUser>
+    <createTime>2016-06-23 17:43:18</createTime>
+    <updateUser></updateUser>
+    <updateTime>2019-07-25 10:58:25</updateTime>
+    <signature>DgQSSyFmOqrf7WQa6WFesZuTOnzFe+zevZg0BYW55MuhMOtUylRD92QW2MZY8fzu6qh/Ggp+OP011VMOg4gO2hbU0K47aLqt/TaTSEBSqnaWQZCUjJAKcrLBKpK3Q+WN</signature>
+    <managed>true</managed>
+    <title>借阅(审批)</title>
+    <deleted>false</deleted>
+    <categoryName>借阅</categoryName>
+    <administrator>admin</administrator>
+    <defaultLanguage></defaultLanguage>
+    <url>{"pc":"","mobile":""}</url>
+    <urlHeight>{"pc":"","mobile":""}</urlHeight>
+    <formItems>
+        <formItem>
+            <id>5816062c-6be5-49df-9796-199c3fd0f785</id>
+            <title>借阅(审批)</title>
+            <templateFile>{"tablet":"借阅-借阅(审批).htm","pc":"借阅-借阅(审批).htm","mobile":"借阅-借阅(审批)_m.htm"}</templateFile>
+            <grid>false</grid>
+            <gridSetting></gridSetting>
+            <orderBy></orderBy>
+            <pageLimit>0</pageLimit>
+            <boModelId>7d6ccda8-aa5c-48a6-a8a9-dcd09baca876</boModelId>
+            <dictionaryFileName></dictionaryFileName>
+            <hiddenHead>false</hiddenHead>
+            <theme>{"pc":"_bpm.platform","mobile":"_bpm.platform"}</theme>
+            <itemDisplays/>
+            <scheme>{"pc":"scheme_aws.css","mobile":"scheme_aws.css"}</scheme>
+            <calcFormula></calcFormula>
+            <conditionControl></conditionControl>
+            <validate></validate>
+            <icon></icon>
+            <gridControl></gridControl>
+            <summaryControl></summaryControl>
+            <ruleControl></ruleControl>
+            <hiddenFields></hiddenFields>
+            <hiddenAddBtn>false</hiddenAddBtn>
+        </formItem>
+    </formItems>
+</formModel>

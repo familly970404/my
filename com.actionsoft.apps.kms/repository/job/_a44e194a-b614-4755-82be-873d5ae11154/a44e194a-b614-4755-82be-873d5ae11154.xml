@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<awsScheduleModel>
+    <id>a44e194a-b614-4755-82be-873d5ae11154</id>
+    <createUser>admin</createUser>
+    <createTime>2016-09-21 11:07:36</createTime>
+    <updateUser></updateUser>
+    <updateTime>2019-12-02 17:59:00</updateTime>
+    <signature>DgQSSyFmOqrf7WQa6WFesZuTOnzFe+zevZg0BYW55MuhMOtUylRD92QW2MZY8fzuDvprz7Xy9YlBQDf++OxIInuWwbrKCZQsdLLW0Fv3CA7dqzkWeG9ij1fq3kSFhOZS</signature>
+    <managed>false</managed>
+    <name>KMS全文检索入库</name>
+    <group>DEFAULT</group>
+    <desc>将用户发布到知识库的文件进行全文检索的入库操作，该任务执行前，在全文检索中无法查询到新发布的文件。可根据需求调整执行计划，建议在系统空闲时执行。</desc>
+    <disabled>false</disabled>
+    <system>false</system>
+    <classz>com.actionsoft.apps.kms.job.FullsearchCreatedByFile</classz>
+    <createDate>2016-09-21T11:07:36+08:00</createDate>
+    <triggerRule>6::0</triggerRule>
+    <userParam></userParam>
+    <lastToken></lastToken>
+    <concurrent>false</concurrent>
+    <categoryName>未分类</categoryName>
+    <stateful>false</stateful>
+</awsScheduleModel>

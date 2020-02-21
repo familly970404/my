@@ -1,0 +1,133 @@
+.dimension-left {
+    width: 350px;
+    height: 100%;
+    float: left;
+    left: 0px;
+}
+
+.dimension-right {
+    margin-left: 357px;
+    height: 100%;
+    position: relative;
+}
+
+div.kms-no-record {
+    color: #AAAAAA;
+    text-align: center;
+    font-size: 14px !important;
+    width: 100%;
+    height: 120px;
+    line-height: 120px !important;
+    background: url(../img/no-record-bg.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    cursor: default;
+}
+
+/*维度*/
+.treeDimension {
+    background: url("../img/kms_icon.png") no-repeat -206px -63px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.treeHotspot {
+    background: url("../img/kms_icon.png") no-repeat -279px -63px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.treeDimension-noPerm {
+    background: url("../img/kms_icon.png") no-repeat -209px -216px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.treeHotspot-noPerm {
+    background: url("../img/kms_icon.png") no-repeat -282px -216px !important;
+    width: 16px !important;
+    height: 16px !important;
+    vertical-align: middle !important;
+    margin-right: 10px !important;
+}
+
+.treeNoPerm {
+    cursor: default !important;
+}
+
+.popover {
+    min-width: 150px;
+}
+
+/*重写aws tree的css(public.css)*/
+.ui-tree {
+    font-size: 14px;
+}
+
+.ui-tree .tree-items {
+    height: 30px;
+    line-height: 30px;
+    color: #333;
+}
+
+.ui-tree .tree-items.current {
+    background: #f3f8fe;
+}
+
+.ui-tree .tree-items.current:BEFORE {
+    content: '';
+    position: absolute;
+    border-color: #A7A7A7;
+    border-style: solid;
+    border-width: 0 2px 0 2px;
+    height: 30px;
+}
+
+.ui-tree .root-open.none {
+    background: url('../img/kms_icon.png') no-repeat -425px -68px;
+    vertical-align: bottom;
+    margin-left: 6px;
+    padding-left: 2px;
+}
+
+.ui-tree .root-close.none {
+    background: url('../img/kms_icon.png') no-repeat -507px -261px;
+    vertical-align: bottom;
+    margin-left: 8px;
+    margin-bottom: 2px;
+}
+
+.ui-tree .tree-indent {
+    margin-left: 8px;
+}
+
+.ui-tree .line-items.none {
+    margin-left: 8px;
+}
+
+.currHotspotDimension {
+}
+
+.currHotspotDimension:AFTER {
+    content: ' ';
+    background: url('../img/current.png');
+    width: 16px;
+    height: 16px;
+    display: block;
+    position: relative;
+    top: 2px;
+}
+
+.knwl_selected td {
+    background-color: #d9d9d9 !important;
+}

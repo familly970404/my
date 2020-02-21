@@ -1,0 +1,245 @@
+
+<div id="browseCardDialog" class="browse-card-dialog">
+	<div class="browse-card-title">
+		<span name="closeBrowseDialogSpan" class="browse-card-hidden-operate">&gt;&gt;</span> <span class="title"></span>
+	</div>
+	<div name="head" style="width: 100%; height: 160px;padding:0 20px; background-color:#f8f8f8">
+		<div style="width: 60%; height: 100%; float: left; box-sizing: border-box;  padding-top: 35px;">
+			<div style="width:80px;display:inline-block">
+			<div style="width: 80px; margin: 0 auto;">
+				<img name="cardCreateUserPhoto" alt="知识作者" src="" class="radius5" style="width: 80px; height: 80px;">
+			</div>
+			</div>
+			<div style="width:200px;display:inline-block">
+			<div style="text-align: left; margin-left:15px;text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+				<span name="cardCreateUsername" style="font-size: 14px;color: #666;"></span><br><span name="cardCreateDept" style="font-size: 12px;color: #666;display:inline-block;margin-top:5px"></span>
+			</div>
+			<div name="doRateWrap" style="margin-left:15px;margin-top:15px;height:25px; width: 190px;">
+				<div style="float: left; font-size: 14px; color: #666;">您的评分：</div>
+				<div style="float: left;" name="rateDiv"></div>
+			</div>
+			</div>
+		</div>
+		<div name="ratingWrap" style="width: 40%; height: 100%; float: left;position:relative">
+			<div class="rating_wrap clearbox" style="position:absolute;left:0px;top:0px">
+				<div class="rating_self clearfix" style="width: 165px; display: block;">
+					<strong name="avgScore" class="ll rating_num" style="margin-right: 2px;">0</strong> <span></span>
+					<div class="rating_right ">
+						<div name="avgRate"></div>
+						<div class="rating_sum">
+							<span name="rateUserCounts">0</span>人评分
+						</div>
+					</div>
+				</div>
+				<div name="percentDiv">
+					<span class="stars5 starstop"> 5星 </span>
+					<div name="fiveStarBar" class="power"></div>
+					<span name="fiveStar" class="rating_per"></span> <br> <span class="stars4 starstop"> 4星 </span>
+					<div name="fourStarBar" class="power"></div>
+					<span name="fourStar" class="rating_per"></span> <br> <span class="stars3 starstop"> 3星 </span>
+					<div name="threeStarBar" class="power"></div>
+					<span name="threeStar" class="rating_per"></span> <br> <span class="stars2 starstop"> 2星 </span>
+					<div name="twoStarBar" class="power"></div>
+					<span name="twoStar" class="rating_per"></span> <br> <span class="stars1 starstop"> 1星 </span>
+					<div name="oneStarBar" class="power"></div>
+					<span name="oneStar" class="rating_per"></span> <br>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='cardContext-readOnly' name='cardEditInfo' style='padding:10px 20px;height:100px;white-space: normal;width:95%;overflow:auto' ></div>
+	<!--<table width="100%">
+		<tr>
+			<td colspan = 2 id="cardContext-readOnly-td"></td>
+		</tr>
+	</table>-->
+	<div name="toolbar" style="height: 26px; padding: 5px 10px; border-bottom: 1px solid #E7E7E7;">
+		<button name="packageFiles" class="button blue">打包下载</button>
+		<button name="editCard" class="button green" style="display: none;">编辑知识</button>
+		<button name="reloadCard" class="button red" style="display: none;">刷新知识</button>
+		<span name="reportCard" class="button white browsebtn" style="width: 58px; margin-right: 0;"><span class="report"></span><span class="reportword">反馈</span></span> <span name="collectCard" class="button white browsebtn" style="display: none; width: 56px;"><span class="collection"></span><span class="collectionword">收藏</span></span> <span name="browseInvitation" class="button white browsebtn" style="width: 86px;"><span class="share"></span><span class="shareword">阅读邀请</span></span>
+	</div>
+	<div name="fileAndCommentDiv" style="overflow-x: hidden; overflow-y: auto; position: absolute; bottom: 0; top: 313px;">
+		<div style="width: 100%;">
+			<table style="width: 100%; height: 100%; border-top: 0;" class="table table-thin no-padding">
+				<tbody>
+					<tr valign="top" style="height: 27px; font-weight: bold;word-break: normal;">
+						<td style="width: 35px; border-top: 0; text-align: center;">序号</td>
+						<td style="width: 270px; border-top: 0; padding-left: 8px;">文件名</td>
+						<td style="width: 15px; border-top: 0; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td style="width: 100px; border-top: 0;">上传人</td>
+						<td style="width: 80px; border-top: 0;">大小</td>
+						<td style="width: 130px; border-top: 0; text-align: center;">日期</td>
+						<td style="width: 70px; border-top: 0; text-align: center;">下载/阅读</td>
+					</tr>
+					<tr>
+						<td colspan="7" style="padding: 0; border: 0;">
+							<div name="attachDiv" style="overflow-x: hidden; overflow-y: auto;">
+								<table name="attachTable" style="width: 100%; border-top: 0;" class="table table-thin">
+									<tbody>
+										<tr id='attachColTR'>
+											<td align="center" style="width: 35px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+											<td align="left" style="width: 270px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+											<td align="center" style="width: 15px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+											<td align="center" style="width: 100px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+											<td align="center" style="width: 80px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+											<td align="center" style="width: 130px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+											<td align="center" style="width: 70px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div name="commentDiv" style="width: 100%; overflow-x: hidden; overflow-y: auto; box-sizing: border-box; padding-bottom: 60px;"></div>
+		<div name="submitCommentDiv" style="position: absolute; bottom: 0px; border-top: 1px solid #E7E7E7; width: 100%; padding-top: 5px; padding-bottom: 5px; display: none; background-color: white;">
+			<img name="mePhoto" class="radius30 user-img" />
+			<textarea name="commentContent" placeholder="请输入评论内容..." style="width: 440px; height: 17px; vertical-align: middle; margin-left: 16px;" class="txt awsui-textarea"></textarea>
+			<button name="reportCommentBtn" type="button" class="button blue" style="vertical-align: middle; margin-left: 16px;">提交</button>
+		</div>
+		<div name="comment-toogle" class="add-comment-wrap">
+			<div class="add-comment"></div>
+		</div>
+	</div>
+	<div name="fullscreenWrap" style="filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5000000,endColorstr=#E5000000);position: fixed; left: 0; right: 0; top: 0; bottom: 0; display: none; z-index: 501;">
+		<!-- <div name="fullscreenpanel" class="fullscreenpanel"></div> -->
+		<div name='fstoolbar' class="fstoolbar">
+			<div class='toolbar-photo'>
+				<img src="" class="awsui-user-profile">
+			</div>
+			<div class='toolbar-title'></div>
+			<div name="fsclosebtn" class="fsclosebtn" title="关闭"></div>
+			<div name="fsdownloadbtn" class="fsdownloadbtn" onclick="downloadFile(this)" title="下载文件"></div>
+		</div>
+		<div name="previewpanel" class="previewpanel"></div>
+	</div>
+	<input id="sid" name="sid" type="hidden" />
+	<div id='knwlDocDialog' style="display: none;">
+		<table class="awsui-ux" style="padding: 0px 10px;">
+			<tbody>
+				<tr >
+					<td>
+
+							<table class="awsui-ux" style="padding: 0px 0px;">
+								<colgroup>
+									<col class="awsui-ux-title" style="width: 10%;">
+									<col style="width: 30%;">
+									<col class="awsui-ux-title" style="width: 60%;">
+								</colgroup>
+								<tbody>
+									<tr height="35px">
+										<td >标题</td>
+										<td><span class="required"> <input id="cardName" name="cardName" type="text" class="txt" style="width: 264px;" />
+										</span></td>
+										<td  rowspan="6">
+										     <div id='cardEditTd'><script type='text/plain' id='cardEditInfo' name='cardEditInfo' style='height:170px;white-space: normal;width:100%' ></script></div>
+                                             <div id="cardEditNoContent" style="text-align:center;height:275px;display:none;cursor:pointer;background:url(../apps/com.actionsoft.apps.kms/img/no_content.png) no-repeat top;background-size:40% 80%;"   onclick="showEditor()">
+
+												 <span style="display:inline-block;position:relative;top:230px;color:#C0C2C4">暂无正文，点击此处编辑，或左下角上传文件</span>
+											 </div>
+										</td>
+									</tr>
+									<tr height="35px">
+										<td >有效期</td>
+										<td><input id="validDate" name="validDate" type="text" class="txt" placeholder="默认长期有效" title="默认长期有效" style="width: 162px;" /></td>
+									</tr>
+									<tr height="35px" class="onlineLevelTr" >
+										<td >格式转换</td>
+										<td>
+										   <!--<input class="awsui-radio" name="radioxOL" checked="checked" id="rdoOL1" value="1" type="radio">
+										   <label class="awsui-radio-label" for="rdoOL1">在线阅读和下载</label> 
+										   <input class="awsui-radio" name="radioxOL" id="rdoOL0" value="0" type="radio"> 
+										   <label class="awsui-radio-label" for="rdoOL0">在线阅读</label>
+										   <input class="awsui-radio" name="radioxOL" id="rdoOL2" value="2" type="radio"> 
+										   <label class="awsui-radio-label" for="rdoOL0">只下载</label>-->
+											<select id="rdoOL"></select>
+										 </td>
+									</tr>
+
+										<!--<tr height="35px">
+										    <td >可以评论</td>
+											<td></td>
+										</tr>-->
+									<tr height="35px">
+										<td >保密级别</td>
+										<td><input class="awsui-radio" checked="checked" name="radioxSL" id="rdoSL0" value="0" type="radio"> <label class="awsui-radio-label" for="rdoSL0">普通</label> <input class="awsui-radio" name="radioxSL" id="rdoSL1" value="1" type="radio"> <label class="awsui-radio-label" for="rdoSL1">秘密</label> <input class="awsui-radio" name="radioxSL" id="rdoSL2" value="2" type="radio"> <label class="awsui-radio-label" for="rdoSL2">机密</label></td>
+									</tr>
+											<tr height="35px">
+										    <td >互动选项</td>
+											<td><input id="isCommentSB" type="checkbox">&nbsp;&nbsp;&nbsp;&nbsp;<input id="isRateSB" type="checkbox"></td>
+											</tr>
+									<!--<tr>
+										<td class="awsui-ux-title">知识内容</td>
+										<td colspan = '3'><textarea class="txt awsui-textarea" placeholder="" id="cardContext" name="cardContext" title="" style="height: 80px; width: 530px;"></textarea></td>
+									</tr>-->
+								</tbody>
+							</table>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<fieldset style="margin: 0;">
+							<legend style="margin: 0;"> 文件 </legend>
+							<table style="width: 100%; border-top: 0;" class="table table-thin no-padding">
+								<tbody>
+									<tr>
+										<td style="width: 45px; border: 0; text-align: center;">序号</td>
+										<td style="width: 300px; border: 0;">名称</td>
+										<td style="width: 15px; border: 0; text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+										<td style="width: 50px; border: 0;">版本</td>
+										<td style="width: 100px; border: 0;">上传人</td>
+										<td style="width: 80px; border: 0;">大小</td>
+										<td style="width: 130px; border: 0; text-align: center;">日期</td>
+										<td style="width: 40px; border: 0;">删除</td>
+									</tr>
+									<tr>
+										<td colspan="8" style="padding: 0; border: 0;">
+											<div id="fileDiv" style="overflow-x: hidden; overflow-y: auto; height: 100px; border: 1px solid #e5e5e5;">
+												<table id="fileTable" style="width: 100%; border-top: 0;" class="table table-thin">
+													<tr id='colTR'>
+														<td align="center" style="width: 45px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+														<td align="left" style="width: 300px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+														<td align="center" style="width: 15px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+														<td align="center" style="width: 50px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+														<td align="center" style="width: 100px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+														<td align="center" style="width: 80px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+														<td align="center" style="width: 130px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+														<td align="center" style="width: 40px; height: 0; min-height: 0; max-height: 0; margin: 0; padding: 0; border: 0;"></td>
+													</tr>
+												</table>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="8" style="text-align: right; border: 0;">
+											<div id="uploadDoc" class="upbtn-wrapper" style="display: inline-block; float: left;">
+												<div class="upbtn-icon"></div>
+												<div class="upbtn-inner">
+													<span class="upbtn-span">上传文件</span>
+												</div>
+											</div>
+											<button id="knwlDocOkBtn" class="button blue">保存</button>
+											<button id="knwlDocNoBtn" class="button" style="margin-right: 0;">关闭</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</fieldset>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div id="reportCardPopbox" class="awsui-popbox" style="z-index:301">
+	<div style="margin: 20px">
+		<textarea id="reportTextarea" placeholder="反馈内容将发送给管理员。如果要参与评论，请点击右下角图标。" style="width: 200px; height: 100px; margin-bottom: 10px;" class="txt awsui-textarea"></textarea>
+		<button id="reportButton" class="button green" style="float: right; margin-right: 0;">提交</button>
+	</div>
+</div>
+<div title="选择分享类型" id="select-share-dlg" style='display: none;z-index:151'>
+	<div id="select-share-dlg-content" style='padding-top: 10px; overflow: hidden;'></div>
+</div>
